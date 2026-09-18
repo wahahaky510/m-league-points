@@ -23,14 +23,34 @@
       "games": 4
     },
     {
+      "team": "KADOKAWAサクラナイツ",
+      "short": "サクラナイツ",
+      "owner": "ゆうま",
+      "point": 48.7,
+      "color": "#df4385",
+      "top": "KADOKAWA",
+      "main": "サクラナイツ",
+      "games": 4
+    },
+    {
+      "team": "TEAM RAIDEN / 雷電",
+      "short": "雷電",
+      "owner": "ゆうま",
+      "point": 41.1,
+      "color": "#e59b19",
+      "top": "TEAM",
+      "main": "雷電",
+      "games": 4
+    },
+    {
       "team": "U-NEXT Pirates",
       "short": "パイレーツ",
       "owner": "やはぎ",
-      "point": 58.5,
+      "point": 39.7,
       "color": "#0e027d",
       "top": "U-NEXT",
       "main": "Pirates",
-      "games": 2
+      "games": 4
     },
     {
       "team": "EX風林火山",
@@ -40,16 +60,6 @@
       "color": "#a70008",
       "top": "EX",
       "main": "風林火山",
-      "games": 2
-    },
-    {
-      "team": "TEAM RAIDEN / 雷電",
-      "short": "雷電",
-      "owner": "ゆうま",
-      "point": -4.3,
-      "color": "#e59b19",
-      "top": "TEAM",
-      "main": "雷電",
       "games": 2
     },
     {
@@ -63,16 +73,6 @@
       "games": 2
     },
     {
-      "team": "KADOKAWAサクラナイツ",
-      "short": "サクラナイツ",
-      "owner": "ゆうま",
-      "point": -16.9,
-      "color": "#df4385",
-      "top": "KADOKAWA",
-      "main": "サクラナイツ",
-      "games": 2
-    },
-    {
       "team": "BEAST X",
       "short": "ビースト",
       "owner": "いつき",
@@ -80,16 +80,6 @@
       "color": "#024958",
       "top": "x",
       "main": "BEAST",
-      "games": 2
-    },
-    {
-      "team": "KONAMI 麻雀格闘倶楽部",
-      "short": "ファイトクラブ",
-      "owner": "とかじ",
-      "point": -56.3,
-      "color": "#e50104",
-      "top": "KONAMI",
-      "main": "麻雀格闘倶楽部",
       "games": 2
     },
     {
@@ -101,9 +91,27 @@
       "top": "赤坂",
       "main": "ドリブンズ",
       "games": 4
+    },
+    {
+      "team": "KONAMI 麻雀格闘倶楽部",
+      "short": "ファイトクラブ",
+      "owner": "とかじ",
+      "point": -148.5,
+      "color": "#e50104",
+      "top": "KONAMI",
+      "main": "麻雀格闘倶楽部",
+      "games": 4
     }
   ],
   "members": [
+    {
+      "name": "ゆうま",
+      "point": 89.8,
+      "teams": [
+        "KADOKAWAサクラナイツ",
+        "TEAM RAIDEN / 雷電"
+      ]
+    },
     {
       "name": "れお",
       "point": 82.9,
@@ -121,7 +129,7 @@
     },
     {
       "name": "やはぎ",
-      "point": 58.5,
+      "point": 39.7,
       "teams": [
         "U-NEXT Pirates"
       ]
@@ -134,14 +142,6 @@
       ]
     },
     {
-      "name": "ゆうま",
-      "point": -21.2,
-      "teams": [
-        "TEAM RAIDEN / 雷電",
-        "KADOKAWAサクラナイツ"
-      ]
-    },
-    {
       "name": "いつき",
       "point": -24.2,
       "teams": [
@@ -150,10 +150,10 @@
     },
     {
       "name": "とかじ",
-      "point": -166.0,
+      "point": -258.2,
       "teams": [
-        "KONAMI 麻雀格闘倶楽部",
-        "赤坂ドリブンズ"
+        "赤坂ドリブンズ",
+        "KONAMI 麻雀格闘倶楽部"
       ]
     }
   ]
