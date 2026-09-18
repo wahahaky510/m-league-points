@@ -52,5 +52,6 @@ jobs:
             echo "変更なし"
           else
             git commit -m "chore: update standings $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
             git push
           fi
