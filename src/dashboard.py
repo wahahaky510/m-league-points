@@ -74,6 +74,31 @@ def _rows_html(items: list[dict], name_key: str, sub_fn=None) -> str:
     return "\n".join(out)
 
 
+def _rank_label(i: int, n: int) -> str:
+    """順位表示。下位2名は「雑魚」「クソ雑魚」、上位3名はメダル、他は数字。"""
+    if n >= 2 and i == n:
+        return "クソ雑魚"
+    if n >= 3 and i == n - 1:
+        return "雑魚"
+    return {1: "🥇", 2: "🥈", 3: "🥉"}.get(i, str(i))
+
+
+def _member_rows_html(members: list[dict]) -> str:
+    n = len(members)
+    out = []
+    for i, m in enumerate(members, 1):
+        point = m["point"]
+        cls = "pos" if point >= 0 else "neg"
+        label = _rank_label(i, n)
+        low = " low" if label in ("雑魚", "クソ雑魚") else ""
+        out.append(
+            f'<tr><td class="rank{low}">{label}</td>'
+            f'<td class="name">{m["name"]}</td>'
+            f'<td class="pt {cls}">{point:+.1f}</td></tr>'
+        )
+    return "\n".join(out)
+
+
 def _fill(template: str, mapping: dict[str, str]) -> str:
     """__KEY__ 形式のプレースホルダを置換する（.format のbrace衝突を避ける）。"""
     out = template
@@ -121,7 +146,7 @@ def _team_broadcast_html(teams: list, games_total: int, prev_ranks: dict) -> str
 def _page(snap: Snapshot, history: list[dict], nav_html: str, subtitle: str,
           games_total: int = 120) -> str:
     series = _member_series(history)
-    member_rows = _rows_html([m.__dict__ for m in snap.members], "name")
+    member_rows = _member_rows_html([m.__dict__ for m in snap.members])
 
     # ひとつ前のスナップショットからチーム順位変動（▲▼）を出す
     prev_ranks: dict[str, int] = {}
@@ -471,6 +496,8 @@ _STYLE = """
   td { padding: 8px 4px; border-bottom: 1px solid var(--line); font-size: .95rem; }
   tr:last-child td { border-bottom: none; }
   .rank { width: 36px; text-align: center; color: var(--muted); }
+  .rank.low { width: auto; white-space: nowrap; color: var(--neg); font-weight: 700;
+              font-size: .82rem; padding-right: 6px; }
   .name { font-weight: 600; }
   .sub { color: var(--muted); font-weight: 400; font-size: .78rem; margin-left: 4px; }
   .pt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; width: 84px; }
@@ -634,7 +661,7 @@ _TEMPLATE = (
   __NAV__
 
   <div class="card">
-    <h2>👤 個人順位（担当合計）</h2>
+    <h2>👤 個人順位</h2>
     <table>__MEMBER_ROWS__</table>
   </div>
 
@@ -653,7 +680,8 @@ _TEMPLATE = (
 
 <script>
 const DATA = __CHART_DATA__;
-new Chart(document.getElementById('trend'), {
+let tipOn = false;   // ポイント表(ツールチップ)の表示状態。タップで開閉。
+const trend = new Chart(document.getElementById('trend'), {
   type: 'line',
   data: {
     labels: DATA.labels,
@@ -666,7 +694,19 @@ new Chart(document.getElementById('trend'), {
   options: {
     responsive: true,
     interaction: { mode: 'index', intersect: false },
-    plugins: { legend: { labels: { color: '#c8c8dc' } } },
+    plugins: {
+      legend: { labels: { color: '#c8c8dc' } },
+      tooltip: { enabled: true },
+    },
+    // クリック/タップで表示、もう一度で非表示
+    onClick: () => {
+      tipOn = !tipOn;
+      if (!tipOn) {
+        trend.setActiveElements([]);
+        trend.tooltip.setActiveElements([], { x: 0, y: 0 });
+        trend.update();
+      }
+    },
     scales: {
       x: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },
       y: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },
@@ -775,7 +815,7 @@ function openM(iso){
       const t = CAL.teams[key] || {name:(g.raw[j]||''), color:'#555', owner:''};
       h += '<div class="mteam"><span class="msw" style="background:'+t.color+'"></span>'
          + '<span class="mnm">'+t.name+'</span>'
-         + (t.owner? '<span class="mow">担当: '+t.owner+'</span>':'') + '</div>';
+         + (t.owner? '<span class="mow">'+t.owner+'</span>':'') + '</div>';
     });
     if(g.results && g.results.length){
       h += '<div class="mres">';

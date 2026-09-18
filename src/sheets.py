@@ -44,7 +44,7 @@ def update_standings_sheet(settings: Settings, snap: Snapshot) -> None:
     values: list[list[object]] = []
     values.append([f"Mリーグ ポイント争奪戦  {snap.season}", "", "", f"更新: {snap.date}", "", ""])
     values.append(["", "", "", "", "", ""])
-    values.append(["👤 個人順位（担当合計）", "", "", "🏆 チーム順位", "", ""])
+    values.append(["👤 個人順位", "", "", "🏆 チーム順位", "", ""])
     values.append(["順位", "メンバー", "ポイント", "順位", "チーム", "ポイント（担当）"])
 
     n = max(len(snap.members), len(snap.teams))

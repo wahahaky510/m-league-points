@@ -37,6 +37,8 @@
   td { padding: 8px 4px; border-bottom: 1px solid var(--line); font-size: .95rem; }
   tr:last-child td { border-bottom: none; }
   .rank { width: 36px; text-align: center; color: var(--muted); }
+  .rank.low { width: auto; white-space: nowrap; color: var(--neg); font-weight: 700;
+              font-size: .82rem; padding-right: 6px; }
   .name { font-weight: 600; }
   .sub { color: var(--muted); font-weight: 400; font-size: .78rem; margin-left: 4px; }
   .pt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; width: 84px; }
@@ -188,13 +190,13 @@
   <nav class="seasons"><a class="" href="index.html">今シーズン</a><a class="" href="players.html">🎴 選手</a><a class="" href="calendar.html">📅 日程</a><a class="" href="archive.html">📚 アーカイブ</a></nav>
 
   <div class="card">
-    <h2>👤 個人順位（担当合計）</h2>
+    <h2>👤 個人順位</h2>
     <table><tr><td class="rank">🥇</td><td class="name">れお</td><td class="pt pos">+697.3</td></tr>
 <tr><td class="rank">🥈</td><td class="name">まさき</td><td class="pt pos">+443.8</td></tr>
 <tr><td class="rank">🥉</td><td class="name">いつき</td><td class="pt pos">+124.2</td></tr>
 <tr><td class="rank">4</td><td class="name">ゆうま</td><td class="pt pos">+64.7</td></tr>
-<tr><td class="rank">5</td><td class="name">とかじ</td><td class="pt neg">-493.9</td></tr>
-<tr><td class="rank">6</td><td class="name">にの</td><td class="pt neg">-836.1</td></tr></table>
+<tr><td class="rank low">雑魚</td><td class="name">とかじ</td><td class="pt neg">-493.9</td></tr>
+<tr><td class="rank low">クソ雑魚</td><td class="name">にの</td><td class="pt neg">-836.1</td></tr></table>
   </div>
 
   <div class="card chart-card">
@@ -221,7 +223,8 @@
 
 <script>
 const DATA = {"labels": ["2026-05"], "datasets": [{"label": "れお", "data": [697.3], "color": "#4E79A7"}, {"label": "まさき", "data": [443.8], "color": "#F28E2B"}, {"label": "いつき", "data": [124.2], "color": "#59A14F"}, {"label": "ゆうま", "data": [64.7], "color": "#E15759"}, {"label": "とかじ", "data": [-493.9], "color": "#B07AA1"}, {"label": "にの", "data": [-836.1], "color": "#76B7B2"}]};
-new Chart(document.getElementById('trend'), {
+let tipOn = false;   // ポイント表(ツールチップ)の表示状態。タップで開閉。
+const trend = new Chart(document.getElementById('trend'), {
   type: 'line',
   data: {
     labels: DATA.labels,
@@ -234,7 +237,19 @@ new Chart(document.getElementById('trend'), {
   options: {
     responsive: true,
     interaction: { mode: 'index', intersect: false },
-    plugins: { legend: { labels: { color: '#c8c8dc' } } },
+    plugins: {
+      legend: { labels: { color: '#c8c8dc' } },
+      tooltip: { enabled: true },
+    },
+    // クリック/タップで表示、もう一度で非表示
+    onClick: () => {
+      tipOn = !tipOn;
+      if (!tipOn) {
+        trend.setActiveElements([]);
+        trend.tooltip.setActiveElements([], { x: 0, y: 0 });
+        trend.update();
+      }
+    },
     scales: {
       x: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },
       y: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },

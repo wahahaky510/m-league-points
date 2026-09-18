@@ -42,23 +42,63 @@ def _wait_until_public(url: str, timeout: int = 240, interval: int = 10) -> bool
     return False
 
 
+def _jp_date(iso: str) -> str:
+    """"2026-09-18" -> "9/18"（ISO表記のままだと日付が自動リンク化されるため）。"""
+    try:
+        _y, m, d = iso.split("-")
+        return f"{int(m)}/{int(d)}"
+    except ValueError:
+        return iso
+
+
 def build_messages(settings: Settings, snap: Snapshot) -> list[dict]:
-    img = _image_url(settings, snap)
-    top = snap.members[0]
-    # 任意の先頭ラベル（テスト送信など）。環境変数 LINE_MESSAGE_PREFIX で付与。
     import os
+
+    img = _image_url(settings, snap)
+    members = snap.members
+    top = members[0]
+    zako = members[-2] if len(members) >= 2 else None
+    kuso = members[-1] if len(members) >= 1 else None
+
+    def line(label: str, m) -> dict:
+        return {"type": "text", "text": f"{label}：{m.name}（{m.point:+.1f}点）",
+                "size": "sm", "color": "#333333", "wrap": True}
+
+    body_contents = [
+        {"type": "text", "text": "🀄 Mリーグ ポイント争奪戦",
+         "weight": "bold", "size": "md", "color": "#111111"},
+        {"type": "text", "text": f"{snap.season}シーズン ／ {_jp_date(snap.date)}時点",
+         "size": "xs", "color": "#999999"},
+        {"type": "separator", "margin": "md"},
+    ]
+    # テスト送信などの先頭ラベル
     prefix = os.getenv("LINE_MESSAGE_PREFIX", "").strip()
-    head = f"{prefix}\n\n" if prefix else ""
-    text = (
-        f"{head}"
-        f"🀄 Mリーグ ポイント争奪戦\n"
-        f"{snap.season} ／ {snap.date} 時点\n"
-        f"個人順位トップ：{top.name}（{top.point:+.1f}）\n\n"
-        f"📊 ダッシュボード\n{settings.dashboard_url}"
-    )
+    if prefix:
+        body_contents.insert(0, {"type": "text", "text": prefix, "weight": "bold",
+                                 "size": "sm", "color": "#C62828", "wrap": True})
+    if top:
+        body_contents.append(line("トップ", top))
+    if zako:
+        body_contents.append(line("雑魚", zako))
+    if kuso:
+        body_contents.append(line("クソ雑魚", kuso))
+
+    bubble = {
+        "type": "bubble",
+        "body": {"type": "box", "layout": "vertical", "spacing": "sm",
+                 "contents": body_contents},
+        "footer": {"type": "box", "layout": "vertical", "contents": [{
+            "type": "button", "style": "primary", "color": "#1B1B2F", "height": "sm",
+            "action": {"type": "uri", "label": "Dashboard",
+                       "uri": settings.dashboard_url},
+        }]},
+    }
+    flex = {"type": "flex", "altText": f"Mリーグ順位 {_jp_date(snap.date)}：トップ "
+            f"{top.name}", "contents": bubble}
+
     return [
-        {"type": "text", "text": text},
         {"type": "image", "originalContentUrl": img, "previewImageUrl": img},
+        flex,
     ]
 
 

@@ -20,14 +20,23 @@ def image_filename(snap: Snapshot) -> str:
     return f"standings-{snap.date}.png"
 
 
+def _rank_label(i: int, n: int) -> str:
+    if n >= 2 and i == n:
+        return "クソ雑魚"
+    if n >= 3 and i == n - 1:
+        return "雑魚"
+    return {1: "🥇", 2: "🥈", 3: "🥉"}.get(i, str(i))
+
+
 def _card_html(snap: Snapshot) -> str:
-    medals = {1: "🥇", 2: "🥈", 3: "🥉"}
+    n = len(snap.members)
     rows = []
     for i, m in enumerate(snap.members, 1):
-        medal = medals.get(i, str(i))
+        label = _rank_label(i, n)
+        low = " low" if label in ("雑魚", "クソ雑魚") else ""
         cls = "pos" if m.point >= 0 else "neg"
         rows.append(
-            f'<div class="row"><span class="rk">{medal}</span>'
+            f'<div class="row"><span class="rk{low}">{label}</span>'
             f'<span class="nm">{m.name}</span>'
             f'<span class="pt {cls}">{m.point:+.1f}</span></div>'
         )
@@ -46,6 +55,8 @@ def _card_html(snap: Snapshot) -> str:
   .row {{ display:flex; align-items:center; padding:14px 6px;
     border-bottom:1px solid #2c2c3c; }}
   .rk {{ width:52px; font-size:26px; text-align:center; color:#c8c8dc; }}
+  .rk.low {{ width:auto; min-width:52px; font-size:19px; font-weight:800;
+    color:#ef5f6b; text-align:center; padding:0 6px; white-space:nowrap; }}
   .nm {{ flex:1; font-size:26px; font-weight:700; }}
   .pt {{ font-size:28px; font-weight:800; font-variant-numeric:tabular-nums; }}
   .pos {{ color:#4caf7d; }} .neg {{ color:#ef5f6b; }}
@@ -54,7 +65,7 @@ def _card_html(snap: Snapshot) -> str:
 <div class="card" id="card">
   <div class="ttl">🀄 Mリーグ ポイント争奪戦</div>
   <div class="sub">{snap.season} ／ {snap.date} 時点</div>
-  <div class="hd">👤 個人順位（担当合計）</div>
+  <div class="hd">👤 個人順位</div>
   {rows_html}
   <div class="ft">詳しくはダッシュボードへ →</div>
 </div>
