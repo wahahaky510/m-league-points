@@ -1,0 +1,2081 @@
+[
+  {
+    "date": "2026-09-14",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": true,
+    "key": "20260914-1",
+    "results": [
+      {
+        "round": "第1回戦",
+        "scores": [
+          [
+            "逢川恵夢",
+            58.0
+          ],
+          [
+            "仲林圭",
+            3.8
+          ],
+          [
+            "日向藍子",
+            -19.5
+          ],
+          [
+            "滝沢和典",
+            -42.3
+          ]
+        ]
+      },
+      {
+        "round": "第2回戦",
+        "scores": [
+          [
+            "朝倉康心",
+            54.7
+          ],
+          [
+            "松本吉弘",
+            7.4
+          ],
+          [
+            "佐々木寿人",
+            -14.0
+          ],
+          [
+            "三浦智博",
+            -48.1
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-09-15",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス"
+    ],
+    "finished": true,
+    "key": "20260915-2",
+    "results": [
+      {
+        "round": "第1回戦",
+        "scores": [
+          [
+            "尻無濱航",
+            64.9
+          ],
+          [
+            "醍醐大",
+            13.2
+          ],
+          [
+            "二階堂亜樹",
+            -22.9
+          ],
+          [
+            "鈴木たろう",
+            -55.2
+          ]
+        ]
+      },
+      {
+        "round": "第2回戦",
+        "scores": [
+          [
+            "茅森早香",
+            69.7
+          ],
+          [
+            "内川幸太郎",
+            26.3
+          ],
+          [
+            "浅見真紀",
+            -14.2
+          ],
+          [
+            "岡田紗佳",
+            -81.8
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": true,
+    "key": "20260917-3",
+    "results": [
+      {
+        "round": "第1回戦",
+        "scores": [
+          [
+            "本田朋広",
+            56.7
+          ],
+          [
+            "HIRO柴田",
+            13.2
+          ],
+          [
+            "東城りお",
+            -14.1
+          ],
+          [
+            "渡辺太",
+            -55.8
+          ]
+        ]
+      },
+      {
+        "round": "第2回戦",
+        "scores": [
+          [
+            "石井一馬",
+            55.6
+          ],
+          [
+            "園田賢",
+            15.5
+          ],
+          [
+            "鈴木大介",
+            -10.1
+          ],
+          [
+            "萩原聖人",
+            -61.0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-09-18",
+    "weekday": "金",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-21",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-21",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-22",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-22",
+    "weekday": "火",
+    "teams": [
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-24",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-24",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-25",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-25",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-28",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-28",
+    "weekday": "月",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-29",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-09-29",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-01",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-01",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-02",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-02",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-05",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-05",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "セガサミーフェニックス",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-06",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-06",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-08",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-08",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-09",
+    "weekday": "金",
+    "teams": [
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-09",
+    "weekday": "金",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-12",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-12",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-13",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-13",
+    "weekday": "火",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-15",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-15",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-16",
+    "weekday": "金",
+    "teams": [
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-16",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-19",
+    "weekday": "月",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-19",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-20",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-20",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-22",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-22",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-23",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-23",
+    "weekday": "金",
+    "teams": [
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-26",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-26",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-27",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-27",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-29",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-29",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-30",
+    "weekday": "金",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-10-30",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-02",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-02",
+    "weekday": "月",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-03",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-03",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-05",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-05",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-06",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-06",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-09",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-09",
+    "weekday": "月",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-10",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-10",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-12",
+    "weekday": "木",
+    "teams": [
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-12",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KADOKAWAサクラナイツ"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-13",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-13",
+    "weekday": "金",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-16",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-16",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-17",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-17",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-19",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-19",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-20",
+    "weekday": "金",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-20",
+    "weekday": "金",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-23",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-23",
+    "weekday": "月",
+    "teams": [
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-24",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-24",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-26",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-26",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-27",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "セガサミーフェニックス",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-27",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-30",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-11-30",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-01",
+    "weekday": "火",
+    "teams": [
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-01",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-03",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-03",
+    "weekday": "木",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-04",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-04",
+    "weekday": "金",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-07",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-07",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-08",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-08",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-10",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-10",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-11",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-11",
+    "weekday": "金",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-14",
+    "weekday": "月",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-14",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-15",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-15",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-17",
+    "weekday": "木",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-17",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-18",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-18",
+    "weekday": "金",
+    "teams": [
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-21",
+    "weekday": "月",
+    "teams": [
+      "赤坂ドリブンズ",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-21",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-22",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-22",
+    "weekday": "火",
+    "teams": [
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-24",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-24",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-25",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2026-12-25",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-04",
+    "weekday": "月",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-05",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-07",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "セガサミーフェニックス",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-08",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-11",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-12",
+    "weekday": "火",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-14",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-15",
+    "weekday": "金",
+    "teams": [
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-18",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-19",
+    "weekday": "火",
+    "teams": [
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-21",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-22",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-25",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "渋谷ABEMAS",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-26",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-28",
+    "weekday": "木",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-01-29",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-01",
+    "weekday": "月",
+    "teams": [
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-02",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-04",
+    "weekday": "木",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-05",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-08",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-09",
+    "weekday": "火",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-11",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-12",
+    "weekday": "金",
+    "teams": [
+      "KONAMI麻雀格闘倶楽部",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-15",
+    "weekday": "月",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "KONAMI麻雀格闘倶楽部",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-16",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-18",
+    "weekday": "木",
+    "teams": [
+      "EARTH JETS",
+      "セガサミーフェニックス",
+      "TEAM RAIDEN / 雷電",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-19",
+    "weekday": "金",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-22",
+    "weekday": "月",
+    "teams": [
+      "EX風林火山",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "TEAM RAIDEN / 雷電"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-23",
+    "weekday": "火",
+    "teams": [
+      "EARTH JETS",
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-25",
+    "weekday": "木",
+    "teams": [
+      "赤坂ドリブンズ",
+      "KONAMI麻雀格闘倶楽部",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-02-26",
+    "weekday": "金",
+    "teams": [
+      "EARTH JETS",
+      "EX風林火山",
+      "KONAMI麻雀格闘倶楽部",
+      "セガサミーフェニックス"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-03-01",
+    "weekday": "月",
+    "teams": [
+      "KADOKAWAサクラナイツ",
+      "渋谷ABEMAS",
+      "セガサミーフェニックス",
+      "U-NEXT Pirates"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  },
+  {
+    "date": "2027-03-02",
+    "weekday": "火",
+    "teams": [
+      "赤坂ドリブンズ",
+      "EX風林火山",
+      "TEAM RAIDEN / 雷電",
+      "BEAST X"
+    ],
+    "finished": false,
+    "key": "",
+    "results": null
+  }
+]

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mリーグ ポイント争奪戦 2026-27</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #14141f; --card: #1e1e2e; --line: #2c2c3c;
+    --fg: #e8e8f0; --muted: #9a9ab0; --accent: #7c5cff;
+    --pos: #4caf7d; --neg: #ef5f6b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    padding: 16px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; margin: 8px 0 2px; }
+  .meta { color: var(--muted); font-size: .8rem; margin-bottom: 12px; }
+  nav.seasons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  nav.seasons a {
+    font-size: .8rem; text-decoration: none; color: var(--muted);
+    border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px;
+  }
+  nav.seasons a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 700px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .card h2 { font-size: 1rem; margin: 0 0 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 8px 4px; border-bottom: 1px solid var(--line); font-size: .95rem; }
+  tr:last-child td { border-bottom: none; }
+  .rank { width: 36px; text-align: center; color: var(--muted); }
+  .name { font-weight: 600; }
+  .sub { color: var(--muted); font-weight: 400; font-size: .78rem; margin-left: 4px; }
+  .pt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; width: 84px; }
+  .pos { color: var(--pos); }
+  .neg { color: var(--neg); }
+  .chart-card { margin-top: 16px; }
+  footer { color: var(--muted); font-size: .72rem; text-align: center; margin-top: 24px; }
+  .acard {
+    display: block; text-decoration: none; color: var(--fg);
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px; margin-bottom: 12px;
+  }
+  .acard:hover { border-color: var(--accent); }
+  .atitle { font-weight: 700; font-size: 1.1rem; }
+  .ameta { color: var(--muted); font-size: .78rem; margin: 4px 0; }
+  .atop { font-size: .95rem; }
+  /* --- カレンダー --- */
+  .season-picker { display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+                   margin: 4px 0 14px; }
+  .season-picker > span { font-size: .78rem; color: var(--muted); }
+  .season-picker a { font-size: .8rem; text-decoration: none; color: var(--muted);
+                     border: 1px solid var(--line); padding: 4px 12px;
+                     border-radius: 999px; }
+  .season-picker a.active { background: var(--accent); color: #fff;
+                            border-color: var(--accent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 18px;
+            align-items: center; }
+  .legend .tile { font-size: .66rem; }
+  .lgnote { font-size: .72rem; color: var(--muted); margin-right: 4px; }
+  .lg { display: inline-flex; align-items: center; gap: 5px; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .cal-month { margin-bottom: 26px; }
+  .cal-month h3 { font-size: 1.05rem; margin: 0 0 8px; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-h { text-align: center; font-size: .72rem; color: var(--muted);
+           padding: 2px 0; }
+  .cal-c { min-height: 62px; background: var(--card); border: 1px solid var(--line);
+           border-radius: 6px; padding: 4px; }
+  .cal-c.empty { background: transparent; border: none; }
+  .cal-d { font-size: .72rem; color: var(--muted); margin-bottom: 3px; }
+  /* 1試合ぶん = チームカラーの2x2タイル。試合ごとに枠で区切る */
+  .game { margin-bottom: 5px; padding: 3px; border-radius: 6px;
+          background: rgba(255,255,255,.035); }
+  .game:last-child { margin-bottom: 0; }
+  .game.finished { opacity: .4; }
+  .ghd { display: flex; justify-content: space-between; align-items: center;
+         height: 11px; margin-bottom: 2px; }
+  .gnum { font-size: .54rem; color: var(--muted); font-weight: 700; }
+  .gmk { color: var(--pos); font-size: .62rem; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .tile { display: flex; justify-content: space-between; align-items: center;
+          font-size: .6rem; font-weight: 700; color: #fff;
+          padding: 2px 4px; border-radius: 3px; white-space: nowrap;
+          overflow: hidden; text-overflow: ellipsis;
+          text-shadow: 0 1px 1px rgba(0,0,0,.45); }
+  .tile .to { font-size: .5rem; opacity: .95; margin-left: 3px; font-weight: 600; }
+  .cal-c.has-games { cursor: pointer; }
+  .cal-c.has-games:hover { border-color: var(--accent); }
+  @media (max-width: 620px) {
+    .cal-c { min-height: 46px; padding: 2px; }
+    .tile { font-size: .5rem; padding: 1px 2px; }
+    .tile .to { display: none; }
+    .gnum { font-size: .48rem; }
+  }
+  /* --- 日付タップの拡大モーダル --- */
+  .ov { position: fixed; inset: 0; background: rgba(0,0,0,.62); display: none;
+        align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+  .ov.show { display: flex; }
+  .modal { background: #1b1b2a; border: 1px solid var(--line); border-radius: 14px;
+           max-width: 440px; width: 100%; max-height: 86vh; overflow: auto;
+           padding: 22px; position: relative; }
+  .mx { position: absolute; top: 10px; right: 12px; background: none; border: none;
+        color: var(--muted); font-size: 22px; cursor: pointer; line-height: 1; }
+  .mtitle { font-size: 1.3rem; font-weight: 800; margin-bottom: 14px; }
+  .mgame { background: rgba(255,255,255,.045); border-radius: 10px; padding: 12px 14px;
+           margin-bottom: 12px; }
+  .mgame.fin { opacity: .55; }
+  .mgnum { font-size: .82rem; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+  .mteam { display: flex; align-items: center; gap: 11px; padding: 8px 2px;
+           border-bottom: 1px solid var(--line); }
+  .mteam:last-child { border-bottom: none; }
+  .msw { width: 18px; height: 18px; border-radius: 5px; flex: 0 0 18px; }
+  .mnm { font-size: 1.05rem; font-weight: 700; flex: 1; }
+  .mow { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+  /* 結果（回戦ごとのスコア） */
+  .mres { margin-top: 10px; }
+  .mround { margin-top: 8px; }
+  .mrname { font-size: .78rem; font-weight: 700; color: var(--accent);
+            margin-bottom: 3px; }
+  .mrrow { display: flex; align-items: center; gap: 8px; padding: 4px 2px;
+           border-bottom: 1px dashed rgba(255,255,255,.08); }
+  .mrrow:last-child { border-bottom: none; }
+  .mrk { width: 16px; text-align: center; color: var(--muted); font-size: .78rem; }
+  .mrsw { width: 11px; height: 11px; border-radius: 3px; flex: 0 0 11px; }
+  .mrnm { flex: 1; font-size: .92rem; font-weight: 600; }
+  .mrtm { font-size: .72rem; color: var(--muted); }
+  .mrpt { font-variant-numeric: tabular-nums; font-weight: 800; font-size: .95rem;
+          min-width: 54px; text-align: right; }
+  .mrpt.pos { color: var(--pos); } .mrpt.neg { color: var(--neg); }
+  /* --- 選手ランキング --- */
+  .players-card { max-width: 560px; margin: 0 auto; }
+  .pteam { font-size: .74rem; color: var(--muted); }
+  .pown { font-size: .72rem; margin-left: 6px; font-weight: 700; }
+  td.name { line-height: 1.35; }
+  /* --- 放送風チームランキング --- */
+  .bc { margin: 0; }
+  .trow { display: flex; align-items: stretch; margin-bottom: 5px;
+          border-radius: 6px; overflow: hidden; background: #191926;
+          min-height: 52px; }
+  .trow.thead { min-height: 0; background: transparent; color: var(--muted);
+                font-size: .72rem; margin-bottom: 6px; }
+  .trow.thead .tname { background: transparent !important; align-items: center; }
+  .trow.thead .trank { background: transparent !important; }
+  .trank { width: 44px; flex: 0 0 44px; display: flex; align-items: center;
+           justify-content: center; color: #fff; font-weight: 800;
+           font-size: 1.4rem; }
+  .tname { flex: 1; min-width: 0; display: flex; flex-direction: column;
+           justify-content: center; padding: 6px 12px; }
+  .ttop { font-size: .62rem; letter-spacing: .04em; color: #d8d8e4;
+          line-height: 1; opacity: .85; }
+  .tmain { font-size: 1.15rem; font-weight: 800; color: #fff; line-height: 1.15;
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tpt { flex: 0 0 108px; display: flex; align-items: center;
+         justify-content: flex-end; gap: 4px; padding-right: 6px;
+         font-size: 1.35rem; font-weight: 800; color: #eef0ff;
+         font-variant-numeric: tabular-nums; }
+  .tdiff { flex: 0 0 72px; display: flex; align-items: center;
+           justify-content: flex-end; color: var(--muted); font-size: .92rem;
+           font-variant-numeric: tabular-nums; }
+  .tgames { flex: 0 0 74px; display: flex; align-items: baseline;
+            justify-content: flex-end; padding-right: 12px; color: #cfcfe0;
+            font-size: 1rem; font-variant-numeric: tabular-nums; }
+  .tgames span { color: var(--muted); font-size: .7rem; margin-left: 1px; }
+  .arw { font-size: .72rem; }
+  .arw.up { color: #4caf7d; } .arw.dn { color: #ef5f6b; }
+  @media (max-width: 620px) {
+    .trank { width: 34px; flex-basis: 34px; font-size: 1.1rem; }
+    .tmain { font-size: 1rem; }
+    .tpt { flex-basis: 78px; font-size: 1.05rem; }
+    .tdiff { flex-basis: 52px; font-size: .78rem; }
+    .tgames { flex-basis: 56px; font-size: .82rem; padding-right: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🀄 Mリーグ ポイント争奪戦</h1>
+  <div class="meta">2026-27 ／ 2026-09-18 時点（現シーズン）</div>
+  <nav class="seasons"><a class="active" href="index.html">今シーズン</a><a class="" href="players.html">🎴 選手</a><a class="" href="calendar.html">📅 日程</a><a class="" href="archive.html">📚 アーカイブ</a></nav>
+
+  <div class="card">
+    <h2>👤 個人順位（担当合計）</h2>
+    <table><tr><td class="rank">🥇</td><td class="name">れお</td><td class="pt pos">+82.9</td></tr>
+<tr><td class="rank">🥈</td><td class="name">にの</td><td class="pt pos">+66.6</td></tr>
+<tr><td class="rank">🥉</td><td class="name">やはぎ</td><td class="pt pos">+58.5</td></tr>
+<tr><td class="rank">4</td><td class="name">まさき</td><td class="pt pos">+3.4</td></tr>
+<tr><td class="rank">5</td><td class="name">ゆうま</td><td class="pt neg">-21.2</td></tr>
+<tr><td class="rank">6</td><td class="name">いつき</td><td class="pt neg">-24.2</td></tr>
+<tr><td class="rank">7</td><td class="name">とかじ</td><td class="pt neg">-166.0</td></tr></table>
+  </div>
+
+  <div class="card chart-card">
+    <h2>🏆 チームランキング</h2>
+    <div class="bc"><div class="trow thead"><div class="trank"></div><div class="tname">チームランキング</div><div class="tpt">トータル</div><div class="tdiff">ポイント差</div><div class="tgames">試合数</div></div><div class="trow"><div class="trank" style="background:#dd6b03">1</div><div class="tname" style="background:linear-gradient(90deg,#dd6b0355,#dd6b030d)"><div class="ttop">セガサミー</div><div class="tmain">フェニックス</div></div><div class="tpt">+82.9</div><div class="tdiff">-</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#04431f">2</div><div class="tname" style="background:linear-gradient(90deg,#04431f55,#04431f0d)"><div class="ttop">EARTH</div><div class="tmain">JETS</div></div><div class="tpt">+78.7</div><div class="tdiff">4.2</div><div class="tgames">4<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#0e027d">3</div><div class="tname" style="background:linear-gradient(90deg,#0e027d55,#0e027d0d)"><div class="ttop">U-NEXT</div><div class="tmain">Pirates</div></div><div class="tpt">+58.5</div><div class="tdiff">20.2</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#a70008">4</div><div class="tname" style="background:linear-gradient(90deg,#a7000855,#a700080d)"><div class="ttop">EX</div><div class="tmain">風林火山</div></div><div class="tpt">+3.4</div><div class="tdiff">55.1</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#e59b19">5</div><div class="tname" style="background:linear-gradient(90deg,#e59b1955,#e59b190d)"><div class="ttop">TEAM</div><div class="tmain">雷電</div></div><div class="tpt">-4.3</div><div class="tdiff">7.7</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#a86406">6</div><div class="tname" style="background:linear-gradient(90deg,#a8640655,#a864060d)"><div class="ttop">渋谷</div><div class="tmain">ABEMAS</div></div><div class="tpt">-12.1</div><div class="tdiff">7.8</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#df4385">7</div><div class="tname" style="background:linear-gradient(90deg,#df438555,#df43850d)"><div class="ttop">KADOKAWA</div><div class="tmain">サクラナイツ</div></div><div class="tpt">-16.9</div><div class="tdiff">4.8</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#024958">8</div><div class="tname" style="background:linear-gradient(90deg,#02495855,#0249580d)"><div class="ttop">x</div><div class="tmain">BEAST</div></div><div class="tpt">-24.2</div><div class="tdiff">7.3</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#e50104">9</div><div class="tname" style="background:linear-gradient(90deg,#e5010455,#e501040d)"><div class="ttop">KONAMI</div><div class="tmain">麻雀格闘倶楽部</div></div><div class="tpt">-56.3</div><div class="tdiff">32.1</div><div class="tgames">2<span>/120</span></div></div>
+<div class="trow"><div class="trank" style="background:#95c500">10</div><div class="tname" style="background:linear-gradient(90deg,#95c50055,#95c5000d)"><div class="ttop">赤坂</div><div class="tmain">ドリブンズ</div></div><div class="tpt">-109.7</div><div class="tdiff">53.4</div><div class="tgames">4<span>/120</span></div></div></div>
+  </div>
+
+  <div class="card chart-card">
+    <h2>📈 個人ポイント推移</h2>
+    <canvas id="trend" height="140"></canvas>
+  </div>
+
+  <footer>自動更新 / m-league.jp より集計 ・ 得点はシーズンごとに独立</footer>
+</div>
+
+<script>
+const DATA = {"labels": ["2026-09-18"], "datasets": [{"label": "れお", "data": [82.9], "color": "#4E79A7"}, {"label": "にの", "data": [66.6], "color": "#F28E2B"}, {"label": "やはぎ", "data": [58.5], "color": "#59A14F"}, {"label": "まさき", "data": [3.4], "color": "#E15759"}, {"label": "ゆうま", "data": [-21.2], "color": "#B07AA1"}, {"label": "いつき", "data": [-24.2], "color": "#76B7B2"}, {"label": "とかじ", "data": [-166.0], "color": "#EDC948"}]};
+new Chart(document.getElementById('trend'), {
+  type: 'line',
+  data: {
+    labels: DATA.labels,
+    datasets: DATA.datasets.map(d => ({
+      label: d.label, data: d.data, borderColor: d.color,
+      backgroundColor: d.color, tension: .25, spanGaps: true,
+      pointRadius: 3, borderWidth: 2,
+    })),
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { labels: { color: '#c8c8dc' } } },
+    scales: {
+      x: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },
+      y: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },
+    },
+  },
+});
+</script>
+</body>
+</html>

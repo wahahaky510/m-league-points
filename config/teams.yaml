@@ -1,0 +1,101 @@
+# 担当マッピング設定
+# ------------------------------------------------------------
+# どのMリーグチームを身内の誰が担当しているかを定義する。
+# team は m-league.jp/stats のチーム名と「完全一致」させること
+# （表記揺れがあるとスクレイピング結果と突き合わせできない）。
+#
+# 去年は「チーム合計」シートの B/C 列に手入力していたものを
+# ここに移した（2026-09 時点のシート実データから移植）。
+# ------------------------------------------------------------
+
+season: "2026-27"
+
+# 集計対象のポイントが入っている指標ラベル（サイト実データ上は "ポイント"）
+total_point_label: "ポイント"
+
+# レギュラーシーズンの最終月（この月末までを集計対象とする）。
+# Mリーグはレギュラーシーズンが3月末で終わり、以降はセミ/ファイナル。
+# 毎年レギュラーシーズンのみを集計するため 3 を指定。
+regular_season_end_month: 3
+
+# レギュラーシーズンの1チームあたり総試合数（放送の「/120」表記に使用）
+games_total: 120
+
+# 身内メンバー（表示名）
+members:
+  - name: "にの"
+  - name: "まさき"
+  - name: "とかじ"
+  - name: "ゆうま"
+  - name: "れお"
+  - name: "いつき"
+  - name: "やはぎ"
+
+# チーム → 担当メンバー の対応（2026-27シーズン編成）
+# team:  m-league.jp のチーム名（完全一致）
+# owner: 上の members の name のいずれか
+# short: 略称（カレンダー等で使用）
+# color: チームカラー（放送風チームランキングのバー色。#RRGGBB）
+# top:   放送風表示の小さい上ラベル（例: "EARTH"）
+# main:  放送風表示の大きいメインラベル（例: "JETS"）
+assignments:
+  - team: "EARTH JETS"
+    owner: "にの"
+    short: "ジェッツ"
+    color: "#04431f"
+    top: "EARTH"
+    main: "JETS"
+  - team: "渋谷ABEMAS"
+    owner: "にの"
+    short: "アベマズ"
+    color: "#a86406"
+    top: "渋谷"
+    main: "ABEMAS"
+  - team: "EX風林火山"
+    owner: "まさき"
+    short: "風林火山"
+    color: "#a70008"
+    top: "EX"
+    main: "風林火山"
+  - team: "KONAMI 麻雀格闘倶楽部"
+    owner: "とかじ"
+    short: "ファイトクラブ"
+    color: "#e50104"
+    top: "KONAMI"
+    main: "麻雀格闘倶楽部"
+  - team: "赤坂ドリブンズ"
+    owner: "とかじ"
+    short: "ドリブンズ"
+    color: "#95c500"
+    top: "赤坂"
+    main: "ドリブンズ"
+  - team: "KADOKAWAサクラナイツ"
+    owner: "ゆうま"
+    short: "サクラナイツ"
+    color: "#df4385"
+    top: "KADOKAWA"
+    main: "サクラナイツ"
+  - team: "TEAM RAIDEN / 雷電"
+    owner: "ゆうま"
+    short: "雷電"
+    color: "#e59b19"
+    top: "TEAM"
+    main: "雷電"
+  - team: "セガサミーフェニックス"
+    owner: "れお"
+    short: "フェニックス"
+    color: "#dd6b03"
+    top: "セガサミー"
+    main: "フェニックス"
+  - team: "BEAST X"
+    owner: "いつき"
+    short: "ビースト"
+    color: "#024958"
+    top: "x"
+    main: "BEAST"
+  - team: "U-NEXT Pirates"
+    owner: "やはぎ"
+    short: "パイレーツ"
+    color: "#0e027d"
+    top: "U-NEXT"
+    main: "Pirates"

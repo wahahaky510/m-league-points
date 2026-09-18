@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mリーグ 選手個人ランキング 2026-27</title>
+<style>
+  :root {
+    --bg: #14141f; --card: #1e1e2e; --line: #2c2c3c;
+    --fg: #e8e8f0; --muted: #9a9ab0; --accent: #7c5cff;
+    --pos: #4caf7d; --neg: #ef5f6b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    padding: 16px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.4rem; margin: 8px 0 2px; }
+  .meta { color: var(--muted); font-size: .8rem; margin-bottom: 12px; }
+  nav.seasons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  nav.seasons a {
+    font-size: .8rem; text-decoration: none; color: var(--muted);
+    border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px;
+  }
+  nav.seasons a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 700px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .card h2 { font-size: 1rem; margin: 0 0 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 8px 4px; border-bottom: 1px solid var(--line); font-size: .95rem; }
+  tr:last-child td { border-bottom: none; }
+  .rank { width: 36px; text-align: center; color: var(--muted); }
+  .name { font-weight: 600; }
+  .sub { color: var(--muted); font-weight: 400; font-size: .78rem; margin-left: 4px; }
+  .pt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; width: 84px; }
+  .pos { color: var(--pos); }
+  .neg { color: var(--neg); }
+  .chart-card { margin-top: 16px; }
+  footer { color: var(--muted); font-size: .72rem; text-align: center; margin-top: 24px; }
+  .acard {
+    display: block; text-decoration: none; color: var(--fg);
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px; margin-bottom: 12px;
+  }
+  .acard:hover { border-color: var(--accent); }
+  .atitle { font-weight: 700; font-size: 1.1rem; }
+  .ameta { color: var(--muted); font-size: .78rem; margin: 4px 0; }
+  .atop { font-size: .95rem; }
+  /* --- カレンダー --- */
+  .season-picker { display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+                   margin: 4px 0 14px; }
+  .season-picker > span { font-size: .78rem; color: var(--muted); }
+  .season-picker a { font-size: .8rem; text-decoration: none; color: var(--muted);
+                     border: 1px solid var(--line); padding: 4px 12px;
+                     border-radius: 999px; }
+  .season-picker a.active { background: var(--accent); color: #fff;
+                            border-color: var(--accent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 18px;
+            align-items: center; }
+  .legend .tile { font-size: .66rem; }
+  .lgnote { font-size: .72rem; color: var(--muted); margin-right: 4px; }
+  .lg { display: inline-flex; align-items: center; gap: 5px; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .cal-month { margin-bottom: 26px; }
+  .cal-month h3 { font-size: 1.05rem; margin: 0 0 8px; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-h { text-align: center; font-size: .72rem; color: var(--muted);
+           padding: 2px 0; }
+  .cal-c { min-height: 62px; background: var(--card); border: 1px solid var(--line);
+           border-radius: 6px; padding: 4px; }
+  .cal-c.empty { background: transparent; border: none; }
+  .cal-d { font-size: .72rem; color: var(--muted); margin-bottom: 3px; }
+  /* 1試合ぶん = チームカラーの2x2タイル。試合ごとに枠で区切る */
+  .game { margin-bottom: 5px; padding: 3px; border-radius: 6px;
+          background: rgba(255,255,255,.035); }
+  .game:last-child { margin-bottom: 0; }
+  .game.finished { opacity: .4; }
+  .ghd { display: flex; justify-content: space-between; align-items: center;
+         height: 11px; margin-bottom: 2px; }
+  .gnum { font-size: .54rem; color: var(--muted); font-weight: 700; }
+  .gmk { color: var(--pos); font-size: .62rem; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .tile { display: flex; justify-content: space-between; align-items: center;
+          font-size: .6rem; font-weight: 700; color: #fff;
+          padding: 2px 4px; border-radius: 3px; white-space: nowrap;
+          overflow: hidden; text-overflow: ellipsis;
+          text-shadow: 0 1px 1px rgba(0,0,0,.45); }
+  .tile .to { font-size: .5rem; opacity: .95; margin-left: 3px; font-weight: 600; }
+  .cal-c.has-games { cursor: pointer; }
+  .cal-c.has-games:hover { border-color: var(--accent); }
+  @media (max-width: 620px) {
+    .cal-c { min-height: 46px; padding: 2px; }
+    .tile { font-size: .5rem; padding: 1px 2px; }
+    .tile .to { display: none; }
+    .gnum { font-size: .48rem; }
+  }
+  /* --- 日付タップの拡大モーダル --- */
+  .ov { position: fixed; inset: 0; background: rgba(0,0,0,.62); display: none;
+        align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+  .ov.show { display: flex; }
+  .modal { background: #1b1b2a; border: 1px solid var(--line); border-radius: 14px;
+           max-width: 440px; width: 100%; max-height: 86vh; overflow: auto;
+           padding: 22px; position: relative; }
+  .mx { position: absolute; top: 10px; right: 12px; background: none; border: none;
+        color: var(--muted); font-size: 22px; cursor: pointer; line-height: 1; }
+  .mtitle { font-size: 1.3rem; font-weight: 800; margin-bottom: 14px; }
+  .mgame { background: rgba(255,255,255,.045); border-radius: 10px; padding: 12px 14px;
+           margin-bottom: 12px; }
+  .mgame.fin { opacity: .55; }
+  .mgnum { font-size: .82rem; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+  .mteam { display: flex; align-items: center; gap: 11px; padding: 8px 2px;
+           border-bottom: 1px solid var(--line); }
+  .mteam:last-child { border-bottom: none; }
+  .msw { width: 18px; height: 18px; border-radius: 5px; flex: 0 0 18px; }
+  .mnm { font-size: 1.05rem; font-weight: 700; flex: 1; }
+  .mow { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+  /* 結果（回戦ごとのスコア） */
+  .mres { margin-top: 10px; }
+  .mround { margin-top: 8px; }
+  .mrname { font-size: .78rem; font-weight: 700; color: var(--accent);
+            margin-bottom: 3px; }
+  .mrrow { display: flex; align-items: center; gap: 8px; padding: 4px 2px;
+           border-bottom: 1px dashed rgba(255,255,255,.08); }
+  .mrrow:last-child { border-bottom: none; }
+  .mrk { width: 16px; text-align: center; color: var(--muted); font-size: .78rem; }
+  .mrsw { width: 11px; height: 11px; border-radius: 3px; flex: 0 0 11px; }
+  .mrnm { flex: 1; font-size: .92rem; font-weight: 600; }
+  .mrtm { font-size: .72rem; color: var(--muted); }
+  .mrpt { font-variant-numeric: tabular-nums; font-weight: 800; font-size: .95rem;
+          min-width: 54px; text-align: right; }
+  .mrpt.pos { color: var(--pos); } .mrpt.neg { color: var(--neg); }
+  /* --- 選手ランキング --- */
+  .players-card { max-width: 560px; margin: 0 auto; }
+  .pteam { font-size: .74rem; color: var(--muted); }
+  .pown { font-size: .72rem; margin-left: 6px; font-weight: 700; }
+  td.name { line-height: 1.35; }
+  /* --- 放送風チームランキング --- */
+  .bc { margin: 0; }
+  .trow { display: flex; align-items: stretch; margin-bottom: 5px;
+          border-radius: 6px; overflow: hidden; background: #191926;
+          min-height: 52px; }
+  .trow.thead { min-height: 0; background: transparent; color: var(--muted);
+                font-size: .72rem; margin-bottom: 6px; }
+  .trow.thead .tname { background: transparent !important; align-items: center; }
+  .trow.thead .trank { background: transparent !important; }
+  .trank { width: 44px; flex: 0 0 44px; display: flex; align-items: center;
+           justify-content: center; color: #fff; font-weight: 800;
+           font-size: 1.4rem; }
+  .tname { flex: 1; min-width: 0; display: flex; flex-direction: column;
+           justify-content: center; padding: 6px 12px; }
+  .ttop { font-size: .62rem; letter-spacing: .04em; color: #d8d8e4;
+          line-height: 1; opacity: .85; }
+  .tmain { font-size: 1.15rem; font-weight: 800; color: #fff; line-height: 1.15;
+           white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tpt { flex: 0 0 108px; display: flex; align-items: center;
+         justify-content: flex-end; gap: 4px; padding-right: 6px;
+         font-size: 1.35rem; font-weight: 800; color: #eef0ff;
+         font-variant-numeric: tabular-nums; }
+  .tdiff { flex: 0 0 72px; display: flex; align-items: center;
+           justify-content: flex-end; color: var(--muted); font-size: .92rem;
+           font-variant-numeric: tabular-nums; }
+  .tgames { flex: 0 0 74px; display: flex; align-items: baseline;
+            justify-content: flex-end; padding-right: 12px; color: #cfcfe0;
+            font-size: 1rem; font-variant-numeric: tabular-nums; }
+  .tgames span { color: var(--muted); font-size: .7rem; margin-left: 1px; }
+  .arw { font-size: .72rem; }
+  .arw.up { color: #4caf7d; } .arw.dn { color: #ef5f6b; }
+  @media (max-width: 620px) {
+    .trank { width: 34px; flex-basis: 34px; font-size: 1.1rem; }
+    .tmain { font-size: 1rem; }
+    .tpt { flex-basis: 78px; font-size: 1.05rem; }
+    .tdiff { flex-basis: 52px; font-size: .78rem; }
+    .tgames { flex-basis: 56px; font-size: .82rem; padding-right: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎴 選手個人ランキング</h1>
+  <div class="meta">2026-27 ／ Mリーグ全選手のポイント順（◆=身内の担当）</div>
+  <nav class="seasons"><a class="" href="index.html">今シーズン</a><a class="active" href="players.html">🎴 選手</a><a class="" href="calendar.html">📅 日程</a><a class="" href="archive.html">📚 アーカイブ</a></nav>
+  <div class="card players-card">
+    <table><tr><td class="rank">🥇</td><td class="name">茅森 早香<br><span class="pteam">フェニックス</span><span class="pown" style="color:#B07AA1">◆れお</span></td><td class="pt pos">+69.7</td></tr>
+<tr><td class="rank">🥈</td><td class="name">尻無濱 航<br><span class="pteam">サクラナイツ</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt pos">+64.9</td></tr>
+<tr><td class="rank">🥉</td><td class="name">逢川 恵夢<br><span class="pteam">ジェッツ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt pos">+58.0</td></tr>
+<tr><td class="rank">4</td><td class="name">本田 朋広<br><span class="pteam">雷電</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt pos">+56.7</td></tr>
+<tr><td class="rank">5</td><td class="name">石井 一馬<br><span class="pteam">ジェッツ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt pos">+55.6</td></tr>
+<tr><td class="rank">6</td><td class="name">朝倉 康心<br><span class="pteam">パイレーツ</span><span class="pown" style="color:#EDC948">◆やはぎ</span></td><td class="pt pos">+54.7</td></tr>
+<tr><td class="rank">7</td><td class="name">内川 幸太郎<br><span class="pteam">風林火山</span><span class="pown" style="color:#F28E2B">◆まさき</span></td><td class="pt pos">+26.3</td></tr>
+<tr><td class="rank">8</td><td class="name">園田 賢<br><span class="pteam">ドリブンズ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt pos">+15.5</td></tr>
+<tr><td class="rank">9</td><td class="name">HIRO 柴田<br><span class="pteam">ジェッツ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt pos">+13.2</td></tr>
+<tr><td class="rank">10</td><td class="name">醍醐 大<br><span class="pteam">フェニックス</span><span class="pown" style="color:#B07AA1">◆れお</span></td><td class="pt pos">+13.2</td></tr>
+<tr><td class="rank">11</td><td class="name">松本 吉弘<br><span class="pteam">アベマズ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt pos">+7.4</td></tr>
+<tr><td class="rank">12</td><td class="name">仲林 圭<br><span class="pteam">パイレーツ</span><span class="pown" style="color:#EDC948">◆やはぎ</span></td><td class="pt pos">+3.8</td></tr>
+<tr><td class="rank">13</td><td class="name">堀 慎吾<br><span class="pteam">サクラナイツ</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">14</td><td class="name">阿久津 翔太<br><span class="pteam">サクラナイツ</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">15</td><td class="name">瑞原 明奈<br><span class="pteam">パイレーツ</span><span class="pown" style="color:#EDC948">◆やはぎ</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">16</td><td class="name">鈴木 優<br><span class="pteam">パイレーツ</span><span class="pown" style="color:#EDC948">◆やはぎ</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">17</td><td class="name">多井 隆晴<br><span class="pteam">アベマズ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">18</td><td class="name">白鳥 翔<br><span class="pteam">アベマズ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">19</td><td class="name">竹内 元太<br><span class="pteam">フェニックス</span><span class="pown" style="color:#B07AA1">◆れお</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">20</td><td class="name">佐野 ひなこ<br><span class="pteam">フェニックス</span><span class="pown" style="color:#B07AA1">◆れお</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">21</td><td class="name">中田 花奈<br><span class="pteam">ビースト</span><span class="pown" style="color:#76B7B2">◆いつき</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">22</td><td class="name">下石 戟<br><span class="pteam">ビースト</span><span class="pown" style="color:#76B7B2">◆いつき</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">23</td><td class="name">瀬戸熊 直樹<br><span class="pteam">雷電</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">24</td><td class="name">黒沢 咲<br><span class="pteam">雷電</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">25</td><td class="name">高宮 まり<br><span class="pteam">ファイトクラブ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">26</td><td class="name">伊達 朱里紗<br><span class="pteam">ファイトクラブ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">27</td><td class="name">勝又 健志<br><span class="pteam">風林火山</span><span class="pown" style="color:#F28E2B">◆まさき</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">28</td><td class="name">永井 孝典<br><span class="pteam">風林火山</span><span class="pown" style="color:#F28E2B">◆まさき</span></td><td class="pt pos">+0.0</td></tr>
+<tr><td class="rank">29</td><td class="name">鈴木 大介<br><span class="pteam">ビースト</span><span class="pown" style="color:#76B7B2">◆いつき</span></td><td class="pt neg">-10.1</td></tr>
+<tr><td class="rank">30</td><td class="name">佐々木 寿人<br><span class="pteam">ファイトクラブ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt neg">-14.0</td></tr>
+<tr><td class="rank">31</td><td class="name">東城 りお<br><span class="pteam">ビースト</span><span class="pown" style="color:#76B7B2">◆いつき</span></td><td class="pt neg">-14.1</td></tr>
+<tr><td class="rank">32</td><td class="name">浅見 真紀<br><span class="pteam">ドリブンズ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt neg">-14.2</td></tr>
+<tr><td class="rank">33</td><td class="name">日向 藍子<br><span class="pteam">アベマズ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt neg">-19.5</td></tr>
+<tr><td class="rank">34</td><td class="name">二階堂 亜樹<br><span class="pteam">風林火山</span><span class="pown" style="color:#F28E2B">◆まさき</span></td><td class="pt neg">-22.9</td></tr>
+<tr><td class="rank">35</td><td class="name">滝沢 和典<br><span class="pteam">ファイトクラブ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt neg">-42.3</td></tr>
+<tr><td class="rank">36</td><td class="name">三浦 智博<br><span class="pteam">ジェッツ</span><span class="pown" style="color:#4E79A7">◆にの</span></td><td class="pt neg">-48.1</td></tr>
+<tr><td class="rank">37</td><td class="name">鈴木 たろう<br><span class="pteam">ドリブンズ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt neg">-55.2</td></tr>
+<tr><td class="rank">38</td><td class="name">渡辺 太<br><span class="pteam">ドリブンズ</span><span class="pown" style="color:#59A14F">◆とかじ</span></td><td class="pt neg">-55.8</td></tr>
+<tr><td class="rank">39</td><td class="name">萩原 聖人<br><span class="pteam">雷電</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt neg">-61.0</td></tr>
+<tr><td class="rank">40</td><td class="name">岡田 紗佳<br><span class="pteam">サクラナイツ</span><span class="pown" style="color:#E15759">◆ゆうま</span></td><td class="pt neg">-81.8</td></tr></table>
+  </div>
+  <footer>m-league.jp より集計</footer>
+</div>
+</body>
+</html>

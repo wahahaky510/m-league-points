@@ -1,0 +1,27 @@
+# --- 秘密情報（絶対にコミットしない） ---
+credentials.json
+.env
+*.env
+!.env.example
+# 去年の旧スクリプト。LINEトークン等がベタ書きされているため公開しない
+元/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# --- Playwright / スクショ・生成物 ---
+*.png
+!docs/assets/*.png
+!docs/line/*.png
+spreadsheet_full.png
+
+# --- OS / エディタ ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

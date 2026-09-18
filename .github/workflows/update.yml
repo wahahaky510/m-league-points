@@ -1,0 +1,56 @@
+name: update-standings
+
+# 結果の更新：試合日（月・火・木・金）の夜に集計してシート・ダッシュボードを更新。
+# LINE配信はここでは行わない（土曜の notify-line ワークフローが担当）。
+on:
+  schedule:
+    # JST 23:00 = UTC 14:00。月・火・木・金（1,2,4,5）、レギュラーシーズンの月のみ。
+    - cron: "0 14 * 9-12,1-3 1,2,4,5"
+  workflow_dispatch: {}   # 手動実行も可能
+
+permissions:
+  contents: write   # data/ と docs/ をコミットし直すため
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Write credentials.json from secret
+        run: printf '%s' "$GOOGLE_CREDENTIALS_JSON" > credentials.json
+        env:
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+
+      # 集計・シート更新・共有画像・ダッシュボード生成（LINE送信はしない）
+      - name: Run pipeline
+        env:
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+        run: python -m src.main
+
+      - name: Clean up secret file
+        if: always()
+        run: rm -f credentials.json
+
+      # data/ と docs/（共有画像含む）を push → GitHub Pages がデプロイ
+      - name: Commit updated data & dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ docs/
+          if git diff --staged --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "chore: update standings $(date -u +%Y-%m-%d)"
+            git push
+          fi
