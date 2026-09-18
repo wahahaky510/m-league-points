@@ -45,7 +45,12 @@ def _wait_until_public(url: str, timeout: int = 240, interval: int = 10) -> bool
 def build_messages(settings: Settings, snap: Snapshot) -> list[dict]:
     img = _image_url(settings, snap)
     top = snap.members[0]
+    # 任意の先頭ラベル（テスト送信など）。環境変数 LINE_MESSAGE_PREFIX で付与。
+    import os
+    prefix = os.getenv("LINE_MESSAGE_PREFIX", "").strip()
+    head = f"{prefix}\n\n" if prefix else ""
     text = (
+        f"{head}"
         f"🀄 Mリーグ ポイント争奪戦\n"
         f"{snap.season} ／ {snap.date} 時点\n"
         f"個人順位トップ：{top.name}（{top.point:+.1f}）\n\n"

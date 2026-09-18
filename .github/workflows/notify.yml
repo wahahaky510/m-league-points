@@ -6,7 +6,12 @@ on:
   schedule:
     # JST 10:00 = UTC 01:00。土曜（6）、レギュラーシーズンの月のみ。
     - cron: "0 1 * 9-12,1-3 6"
-  workflow_dispatch: {}   # 手動実行も可能
+  workflow_dispatch:      # 手動実行も可能
+    inputs:
+      note:
+        description: "メッセージ先頭に付けるラベル（例: 🧪 テスト送信）"
+        required: false
+        default: ""
 
 jobs:
   notify:
@@ -28,4 +33,5 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_TARGET_ID: ${{ secrets.LINE_TARGET_ID }}
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+          LINE_MESSAGE_PREFIX: ${{ inputs.note }}
         run: python -m src.notify_line
