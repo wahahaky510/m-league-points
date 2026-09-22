@@ -7,6 +7,13 @@
     "point": 101.9
   },
   {
+    "player": "松本 吉弘",
+    "team": "渋谷ABEMAS",
+    "short": "アベマズ",
+    "owner": "にの",
+    "point": 85.6
+  },
+  {
     "player": "尻無濱 航",
     "team": "KADOKAWAサクラナイツ",
     "short": "サクラナイツ",
@@ -21,25 +28,11 @@
     "point": 70.9
   },
   {
-    "player": "茅森 早香",
-    "team": "セガサミーフェニックス",
-    "short": "フェニックス",
-    "owner": "れお",
-    "point": 69.7
-  },
-  {
     "player": "勝又 健志",
     "team": "EX風林火山",
     "short": "風林火山",
     "owner": "まさき",
-    "point": 65.3
-  },
-  {
-    "player": "黒沢 咲",
-    "team": "TEAM RAIDEN / 雷電",
-    "short": "雷電",
-    "owner": "ゆうま",
-    "point": 62.5
+    "point": 68.1
   },
   {
     "player": "朝倉 康心",
@@ -60,7 +53,21 @@
     "team": "EX風林火山",
     "short": "風林火山",
     "owner": "まさき",
-    "point": 26.3
+    "point": 40.4
+  },
+  {
+    "player": "茅森 早香",
+    "team": "セガサミーフェニックス",
+    "short": "フェニックス",
+    "owner": "れお",
+    "point": 40.3
+  },
+  {
+    "player": "中田 花奈",
+    "team": "BEAST X",
+    "short": "ビースト",
+    "owner": "いつき",
+    "point": 26.4
   },
   {
     "player": "本田 朋広",
@@ -68,6 +75,13 @@
     "short": "雷電",
     "owner": "ゆうま",
     "point": 20.0
+  },
+  {
+    "player": "佐々木 寿人",
+    "team": "KONAMI 麻雀格闘倶楽部",
+    "short": "ファイトクラブ",
+    "owner": "とかじ",
+    "point": 17.6
   },
   {
     "player": "竹内 元太",
@@ -112,25 +126,18 @@
     "point": 8.5
   },
   {
+    "player": "黒沢 咲",
+    "team": "TEAM RAIDEN / 雷電",
+    "short": "雷電",
+    "owner": "ゆうま",
+    "point": 6.3
+  },
+  {
     "player": "鈴木 優",
     "team": "U-NEXT Pirates",
     "short": "パイレーツ",
     "owner": "やはぎ",
-    "point": 7.7
-  },
-  {
-    "player": "松本 吉弘",
-    "team": "渋谷ABEMAS",
-    "short": "アベマズ",
-    "owner": "にの",
-    "point": 7.4
-  },
-  {
-    "player": "仲林 圭",
-    "team": "U-NEXT Pirates",
-    "short": "パイレーツ",
-    "owner": "やはぎ",
-    "point": 3.8
+    "point": 5.6
   },
   {
     "player": "高宮 まり",
@@ -161,13 +168,6 @@
     "point": -9.2
   },
   {
-    "player": "鈴木 大介",
-    "team": "BEAST X",
-    "short": "ビースト",
-    "owner": "いつき",
-    "point": -10.1
-  },
-  {
     "player": "東城 りお",
     "team": "BEAST X",
     "short": "ビースト",
@@ -182,18 +182,11 @@
     "point": -14.2
   },
   {
-    "player": "阿久津 翔太",
+    "player": "岡田 紗佳",
     "team": "KADOKAWAサクラナイツ",
     "short": "サクラナイツ",
     "owner": "ゆうま",
-    "point": -15.2
-  },
-  {
-    "player": "日向 藍子",
-    "team": "渋谷ABEMAS",
-    "short": "アベマズ",
-    "owner": "にの",
-    "point": -19.5
+    "point": -21.0
   },
   {
     "player": "二階堂 亜樹",
@@ -203,6 +196,13 @@
     "point": -22.9
   },
   {
+    "player": "仲林 圭",
+    "team": "U-NEXT Pirates",
+    "short": "パイレーツ",
+    "owner": "やはぎ",
+    "point": -23.5
+  },
+  {
     "player": "瑞原 明奈",
     "team": "U-NEXT Pirates",
     "short": "パイレーツ",
@@ -210,11 +210,11 @@
     "point": -26.5
   },
   {
-    "player": "佐野 ひなこ",
-    "team": "セガサミーフェニックス",
-    "short": "フェニックス",
-    "owner": "れお",
-    "point": -30.5
+    "player": "阿久津 翔太",
+    "team": "KADOKAWAサクラナイツ",
+    "short": "サクラナイツ",
+    "owner": "ゆうま",
+    "point": -40.0
   },
   {
     "player": "伊達 朱里紗",
@@ -228,7 +228,14 @@
     "team": "KONAMI 麻雀格闘倶楽部",
     "short": "ファイトクラブ",
     "owner": "とかじ",
-    "point": -42.3
+    "point": -44.1
+  },
+  {
+    "player": "日向 藍子",
+    "team": "渋谷ABEMAS",
+    "short": "アベマズ",
+    "owner": "にの",
+    "point": -46.5
   },
   {
     "player": "三浦 智博",
@@ -245,25 +252,11 @@
     "point": -55.2
   },
   {
-    "player": "萩原 聖人",
-    "team": "TEAM RAIDEN / 雷電",
-    "short": "雷電",
-    "owner": "ゆうま",
-    "point": -61.0
-  },
-  {
-    "player": "中田 花奈",
+    "player": "鈴木 大介",
     "team": "BEAST X",
     "short": "ビースト",
     "owner": "いつき",
-    "point": -62.9
-  },
-  {
-    "player": "佐々木 寿人",
-    "team": "KONAMI 麻雀格闘倶楽部",
-    "short": "ファイトクラブ",
-    "owner": "とかじ",
-    "point": -64.6
+    "point": -60.8
   },
   {
     "player": "永井 孝典",
@@ -273,10 +266,17 @@
     "point": -67.3
   },
   {
-    "player": "岡田 紗佳",
-    "team": "KADOKAWAサクラナイツ",
-    "short": "サクラナイツ",
+    "player": "佐野 ひなこ",
+    "team": "セガサミーフェニックス",
+    "short": "フェニックス",
+    "owner": "れお",
+    "point": -90.7
+  },
+  {
+    "player": "萩原 聖人",
+    "team": "TEAM RAIDEN / 雷電",
+    "short": "雷電",
     "owner": "ゆうま",
-    "point": -81.8
+    "point": -108.9
   }
 ]
