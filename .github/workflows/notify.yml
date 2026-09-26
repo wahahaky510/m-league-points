@@ -2,10 +2,11 @@ name: notify-line
 
 # LINE配信：土曜の朝に、直近（金曜の更新）の個人順位スクショ＋ダッシュボードURLを送る。
 # スクレイピングはせず、リポジトリに保存済みの最新データ・画像を使う。
+# ※ GitHub Actionsのcronは best-effort で数分〜十数分遅れることがある。
 on:
   schedule:
-    # JST 10:00 = UTC 01:00。土曜（6）、レギュラーシーズンの月のみ。
-    - cron: "0 1 * 9-12,1-3 6"
+    # JST 土 06:00 = UTC 金 21:00。金曜（5）、レギュラーシーズンの月のみ。
+    - cron: "0 21 * 9-12,1-3 5"
   workflow_dispatch:      # 手動実行も可能
     inputs:
       note:

@@ -10,6 +10,9 @@
 
 ---
 
+## 2026-09-26
+- [開発部] 個人順位の各メンバー名の横に担当チーム名（略称）を小さく表示（_member_rows_html に short_by_team を渡し、snap.teams から生成。複数担当は「・」区切り）。リモートの自動更新(2026-09-25)とdocs競合→コード=自版/データ=リモート最新でマージし、docsを新コードで再生成して解決・push。自動運用(週次update)が本番稼働していることを確認
+
 ## 2026-09-18
 - [企画部] 去年のMリーグ得点集計スクリプト（元/M-league_stats.py・message.py・image-message.py）をレビュー。トークンのベタ書き・行番号/座標依存・手動実行・3ファイル分散などの課題を整理し、今年版の方針を決定（GitHub Actions週次自動化／LINE Flexリッチ通知／担当表はリポ内YAML／Google Sheets中心継続／GitHub Pagesダッシュボード）
 - [開発部] リポ土台を新規作成：config/teams.yaml（担当マッピング）、src/config.py（設定・秘密情報を環境変数へ一元化＋Google認証ヘルパー）、.gitignore、requirements.txt、.env.example、src/__init__.py

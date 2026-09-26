@@ -51,7 +51,7 @@ docs/season-<season>.html 各シーズンの最終順位
 | ワークフロー | タイミング(JST) | 内容 |
 |---|---|---|
 | `.github/workflows/update.yml` | **月・火・木・金 23:00** | 集計・シート更新・共有画像・ダッシュボード更新（LINEは送らない） |
-| `.github/workflows/notify.yml` | **土 10:00** | 直近データの個人順位スクショ＋URLをLINEグループへ配信 |
+| `.github/workflows/notify.yml` | **土 06:00** | 直近データの個人順位スクショ＋URLをLINEグループへ配信 |
 
 リポジトリの **Settings > Secrets and variables > Actions** に以下を登録する：
 
