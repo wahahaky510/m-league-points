@@ -83,7 +83,7 @@ def _rank_label(i: int, n: int) -> str:
     return {1: "🥇", 2: "🥈", 3: "🥉"}.get(i, str(i))
 
 
-def _member_rows_html(members: list[dict]) -> str:
+def _member_rows_html(members: list[dict], short_by_team: dict[str, str]) -> str:
     n = len(members)
     out = []
     for i, m in enumerate(members, 1):
@@ -91,9 +91,11 @@ def _member_rows_html(members: list[dict]) -> str:
         cls = "pos" if point >= 0 else "neg"
         label = _rank_label(i, n)
         low = " low" if label in ("雑魚", "クソ雑魚") else ""
+        teams = "・".join(short_by_team.get(t, t) for t in m.get("teams", []))
+        team_html = f'<span class="sub">{teams}</span>' if teams else ""
         out.append(
             f'<tr><td class="rank{low}">{label}</td>'
-            f'<td class="name">{m["name"]}</td>'
+            f'<td class="name">{m["name"]}{team_html}</td>'
             f'<td class="pt {cls}">{point:+.1f}</td></tr>'
         )
     return "\n".join(out)
@@ -146,7 +148,8 @@ def _team_broadcast_html(teams: list, games_total: int, prev_ranks: dict) -> str
 def _page(snap: Snapshot, history: list[dict], nav_html: str, subtitle: str,
           games_total: int = 120) -> str:
     series = _member_series(history)
-    member_rows = _member_rows_html([m.__dict__ for m in snap.members])
+    short_by_team = {t.team: (t.short or t.team) for t in snap.teams}
+    member_rows = _member_rows_html([m.__dict__ for m in snap.members], short_by_team)
 
     # ひとつ前のスナップショットからチーム順位変動（▲▼）を出す
     prev_ranks: dict[str, int] = {}
