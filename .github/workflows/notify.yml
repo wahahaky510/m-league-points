@@ -14,6 +14,9 @@ on:
         required: false
         default: ""
 
+permissions:
+  contents: write   # あおり文の使用済み記録(taunts_used.json)を保存するため
+
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -36,3 +39,18 @@ jobs:
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
           LINE_MESSAGE_PREFIX: ${{ inputs.note }}
         run: python -m src.notify_line
+
+      # 使用済みあおり文の記録をコミット（シーズン中の重複防止を永続化）
+      - name: Persist taunt history
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "chore: taunt history $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push
+          fi
