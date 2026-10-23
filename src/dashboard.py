@@ -345,7 +345,7 @@ def render_calendar(season: str, cfg: TeamsConfig | None = None,
             else:
                 cells.append(f'<div class="cal-c">{inner}</div>')
         months_html.append(
-            f'<div class="cal-month"><h3>{y}年{m}月</h3>'
+            f'<div class="cal-month" data-ym="{y:04d}-{m:02d}"><h3>{y}年{m}月</h3>'
             f'<div class="cal-grid">{"".join(cells)}</div></div>'
         )
 
@@ -539,6 +539,7 @@ _STYLE = """
   .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
   .cal-month { margin-bottom: 26px; }
   .cal-month h3 { font-size: 1.05rem; margin: 0 0 8px; }
+  .cal-month { scroll-margin-top: 12px; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
   .cal-h { text-align: center; font-size: .72rem; color: var(--muted);
            padding: 2px 0; }
@@ -940,6 +941,14 @@ document.querySelectorAll('.cal-c.has-games').forEach(c => {
   c.addEventListener('click', open);
   c.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); } });
 });
+
+// 開いたときに今月のカレンダーまで移動（今月が無いシーズンは先頭のまま）
+(() => {
+  const now = new Date();
+  const ym = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+  const cur = document.querySelector('.cal-month[data-ym="' + ym + '"]');
+  if (cur && cur !== document.querySelector('.cal-month')) cur.scrollIntoView({ block: 'start' });
+})();
 </script>
 </body>
 </html>
