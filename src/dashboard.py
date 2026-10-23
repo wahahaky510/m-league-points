@@ -511,6 +511,7 @@ _STYLE = """
   /* 推移グラフ：高さを固定（スマホで縦がつぶれないように） */
   .trend-box { position: relative; height: 380px; }
   @media (max-width: 620px) { .trend-box { height: 360px; margin: 0 -6px; } }
+  .trend-hint { color: var(--muted); font-size: .7rem; text-align: center; margin-top: 6px; }
   footer { color: var(--muted); font-size: .72rem; text-align: center; margin-top: 24px; }
   .acard {
     display: block; text-decoration: none; color: var(--fg);
@@ -680,6 +681,7 @@ _TEMPLATE = (
   <div class="card chart-card">
     <h2>📈 個人ポイント推移</h2>
     <div class="trend-box"><canvas id="trend"></canvas></div>
+    <div class="trend-hint" id="trend-hint">凡例タップでその人を強調</div>
   </div>
 
   <footer>自動更新 / m-league.jp より集計 ・ 得点はシーズンごとに独立</footer>
@@ -688,7 +690,43 @@ _TEMPLATE = (
 <script>
 const DATA = __CHART_DATA__;
 const SMALL = window.matchMedia('(max-width: 620px)').matches;
-let tipOn = false;   // ポイント表(ツールチップ)の表示状態。タップで開閉。
+const DIM = '33';      // 強調中、他メンバーの色に付ける透明度（16進 2桁）
+let tipOn = false;     // ポイント表(ツールチップ)の表示状態。タップで開閉。
+let focus = null;      // 強調中のメンバー（datasetIndex）。null＝全員通常表示。
+
+// ツールチップを閉じる
+function hideTip(chart) {
+  tipOn = false;
+  chart.setActiveElements([]);
+  chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+  chart.update('none');
+}
+
+// 強調状態を各線に反映（focus 以外を薄く・細く、focus は太く最前面）
+function applyFocus(chart) {
+  chart.data.datasets.forEach((ds, i) => {
+    const c = DATA.datasets[i].color;
+    const dim = focus !== null && i !== focus;
+    ds.borderColor = dim ? c + DIM : c;
+    ds.backgroundColor = dim ? c + DIM : c;
+    ds.borderWidth = focus === i ? 3.5 : dim ? 1.5 : 2;
+    ds.order = focus === i ? 0 : 1;   // order が小さいほど手前に描画
+  });
+  chart.update();
+}
+
+// タップ開閉：表示中にもう一度タップしたら閉じる（Chart.js の再表示より先に止める）
+const tapToggle = {
+  id: 'tapToggle',
+  beforeEvent(chart, args) {
+    if (args.event.type !== 'click') return;
+    // グラフ本体の外（凡例など）のタップ：表示中なら閉じるだけで、凡例の処理は通す
+    if (!args.inChartArea) { if (tipOn) hideTip(chart); return; }
+    if (tipOn) { hideTip(chart); return false; }   // false＝このタップは無視
+    tipOn = true;
+  },
+};
+
 const trend = new Chart(document.getElementById('trend'), {
   type: 'line',
   data: {
@@ -699,9 +737,11 @@ const trend = new Chart(document.getElementById('trend'), {
       pointRadius: SMALL ? 2 : 3, borderWidth: 2,
     })),
   },
+  plugins: [tapToggle],
   options: {
     responsive: true,
     maintainAspectRatio: false,   // 親(.trend-box)の高さに合わせる
+    events: ['click'],            // なぞり/ホバーでは出さず、タップ時だけ表示
     interaction: { mode: 'index', intersect: false },
     plugins: {
       legend: {
@@ -709,18 +749,36 @@ const trend = new Chart(document.getElementById('trend'), {
         labels: {
           color: '#c8c8dc', boxWidth: 10, boxHeight: 10, padding: 8,
           font: { size: SMALL ? 11 : 12 },
+          // 強調で描画順(order)を変えても、凡例の並びは固定
+          sort: (a, b) => a.datasetIndex - b.datasetIndex,
+          // 強調中は他メンバーの凡例文字も薄く
+          generateLabels(chart) {
+            return Chart.defaults.plugins.legend.labels.generateLabels(chart)
+              .map(l => (focus !== null && l.datasetIndex !== focus
+                ? { ...l, fontColor: '#c8c8dc' + '66' } : l));
+          },
+        },
+        // 凡例タップ：その人だけ強調。同じ人をもう一度タップで元に戻す
+        onClick(e, item, legend) {
+          const i = item.datasetIndex;
+          focus = focus === i ? null : i;
+          applyFocus(legend.chart);
+          hint.textContent = focus === null
+            ? '凡例タップでその人を強調'
+            : '同じ名前をもう一度タップで全員表示に戻る';
         },
       },
-      tooltip: { enabled: true },
-    },
-    // クリック/タップで表示、もう一度で非表示
-    onClick: () => {
-      tipOn = !tipOn;
-      if (!tipOn) {
-        trend.setActiveElements([]);
-        trend.tooltip.setActiveElements([], { x: 0, y: 0 });
-        trend.update();
-      }
+      tooltip: {
+        enabled: true,
+        // 強調中でもツールチップの色見本は元の色で
+        callbacks: { labelColor: ctx => {
+          const c = DATA.datasets[ctx.datasetIndex].color;
+          return { borderColor: c, backgroundColor: c };
+        } },
+        // 強調中は強調した人を一番上に
+        itemSort: (a, b) => (b.datasetIndex === focus) - (a.datasetIndex === focus)
+          || b.parsed.y - a.parsed.y,
+      },
     },
     scales: {
       x: {
@@ -737,6 +795,12 @@ const trend = new Chart(document.getElementById('trend'), {
            grid: { color: '#2c2c3c' } },
     },
   },
+});
+const hint = document.getElementById('trend-hint');
+
+// グラフの外をタップしてもツールチップを閉じる
+document.addEventListener('click', e => {
+  if (tipOn && !e.target.closest('.trend-box')) hideTip(trend);
 });
 </script>
 </body>
