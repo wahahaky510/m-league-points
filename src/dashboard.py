@@ -508,6 +508,9 @@ _STYLE = """
   .pos { color: var(--pos); }
   .neg { color: var(--neg); }
   .chart-card { margin-top: 16px; }
+  /* 推移グラフ：高さを固定（スマホで縦がつぶれないように） */
+  .trend-box { position: relative; height: 380px; }
+  @media (max-width: 620px) { .trend-box { height: 360px; margin: 0 -6px; } }
   footer { color: var(--muted); font-size: .72rem; text-align: center; margin-top: 24px; }
   .acard {
     display: block; text-decoration: none; color: var(--fg);
@@ -676,7 +679,7 @@ _TEMPLATE = (
 
   <div class="card chart-card">
     <h2>📈 個人ポイント推移</h2>
-    <canvas id="trend" height="140"></canvas>
+    <div class="trend-box"><canvas id="trend"></canvas></div>
   </div>
 
   <footer>自動更新 / m-league.jp より集計 ・ 得点はシーズンごとに独立</footer>
@@ -684,6 +687,7 @@ _TEMPLATE = (
 
 <script>
 const DATA = __CHART_DATA__;
+const SMALL = window.matchMedia('(max-width: 620px)').matches;
 let tipOn = false;   // ポイント表(ツールチップ)の表示状態。タップで開閉。
 const trend = new Chart(document.getElementById('trend'), {
   type: 'line',
@@ -692,14 +696,21 @@ const trend = new Chart(document.getElementById('trend'), {
     datasets: DATA.datasets.map(d => ({
       label: d.label, data: d.data, borderColor: d.color,
       backgroundColor: d.color, tension: .25, spanGaps: true,
-      pointRadius: 3, borderWidth: 2,
+      pointRadius: SMALL ? 2 : 3, borderWidth: 2,
     })),
   },
   options: {
     responsive: true,
+    maintainAspectRatio: false,   // 親(.trend-box)の高さに合わせる
     interaction: { mode: 'index', intersect: false },
     plugins: {
-      legend: { labels: { color: '#c8c8dc' } },
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#c8c8dc', boxWidth: 10, boxHeight: 10, padding: 8,
+          font: { size: SMALL ? 11 : 12 },
+        },
+      },
       tooltip: { enabled: true },
     },
     // クリック/タップで表示、もう一度で非表示
@@ -712,8 +723,18 @@ const trend = new Chart(document.getElementById('trend'), {
       }
     },
     scales: {
-      x: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },
-      y: { ticks: { color: '#9a9ab0' }, grid: { color: '#2c2c3c' } },
+      x: {
+        ticks: {
+          color: '#9a9ab0', maxRotation: 0, autoSkip: true,
+          maxTicksLimit: SMALL ? 5 : 10, font: { size: SMALL ? 10 : 12 },
+          // 2026-10-22 → 10/22（横幅節約）
+          callback(v) { const l = this.getLabelForValue(v);
+            const [, m, d] = l.split('-'); return +m + '/' + +d; },
+        },
+        grid: { color: '#2c2c3c' },
+      },
+      y: { ticks: { color: '#9a9ab0', font: { size: SMALL ? 10 : 12 } },
+           grid: { color: '#2c2c3c' } },
     },
   },
 });
