@@ -4,21 +4,21 @@
     "team": "TEAM RAIDEN / 雷電",
     "short": "雷電",
     "owner": "ゆうま",
-    "point": 429.5
-  },
-  {
-    "player": "尻無濱 航",
-    "team": "KADOKAWAサクラナイツ",
-    "short": "サクラナイツ",
-    "owner": "ゆうま",
-    "point": 244.2
+    "point": 396.8
   },
   {
     "player": "渡辺 太",
     "team": "赤坂ドリブンズ",
     "short": "ドリブンズ",
     "owner": "とかじ",
-    "point": 229.9
+    "point": 238.6
+  },
+  {
+    "player": "尻無濱 航",
+    "team": "KADOKAWAサクラナイツ",
+    "short": "サクラナイツ",
+    "owner": "ゆうま",
+    "point": 223.5
   },
   {
     "player": "岡田 紗佳",
@@ -42,6 +42,13 @@
     "point": 114.5
   },
   {
+    "player": "仲林 圭",
+    "team": "U-NEXT Pirates",
+    "short": "パイレーツ",
+    "owner": "やはぎ",
+    "point": 107.1
+  },
+  {
     "player": "醍醐 大",
     "team": "セガサミーフェニックス",
     "short": "フェニックス",
@@ -54,6 +61,13 @@
     "short": "アベマズ",
     "owner": "にの",
     "point": 93.8
+  },
+  {
+    "player": "堀 慎吾",
+    "team": "KADOKAWAサクラナイツ",
+    "short": "サクラナイツ",
+    "owner": "ゆうま",
+    "point": 83.2
   },
   {
     "player": "本田 朋広",
@@ -77,20 +91,6 @@
     "point": 73.6
   },
   {
-    "player": "下石 戟",
-    "team": "BEAST X",
-    "short": "ビースト",
-    "owner": "いつき",
-    "point": 61.1
-  },
-  {
-    "player": "仲林 圭",
-    "team": "U-NEXT Pirates",
-    "short": "パイレーツ",
-    "owner": "やはぎ",
-    "point": 50.4
-  },
-  {
     "player": "朝倉 康心",
     "team": "U-NEXT Pirates",
     "short": "パイレーツ",
@@ -105,18 +105,18 @@
     "point": 34.7
   },
   {
-    "player": "内川 幸太郎",
-    "team": "EX風林火山",
-    "short": "風林火山",
-    "owner": "まさき",
-    "point": 26.2
+    "player": "松本 吉弘",
+    "team": "渋谷ABEMAS",
+    "short": "アベマズ",
+    "owner": "にの",
+    "point": 17.4
   },
   {
-    "player": "堀 慎吾",
-    "team": "KADOKAWAサクラナイツ",
-    "short": "サクラナイツ",
-    "owner": "ゆうま",
-    "point": 25.2
+    "player": "下石 戟",
+    "team": "BEAST X",
+    "short": "ビースト",
+    "owner": "いつき",
+    "point": 16.1
   },
   {
     "player": "佐野 ひなこ",
@@ -140,11 +140,11 @@
     "point": 7.6
   },
   {
-    "player": "松本 吉弘",
-    "team": "渋谷ABEMAS",
-    "short": "アベマズ",
+    "player": "HIRO 柴田",
+    "team": "EARTH JETS",
+    "short": "ジェッツ",
     "owner": "にの",
-    "point": 5.0
+    "point": 2.9
   },
   {
     "player": "鈴木 優",
@@ -154,18 +154,18 @@
     "point": -1.4
   },
   {
-    "player": "鈴木 大介",
-    "team": "BEAST X",
-    "short": "ビースト",
-    "owner": "いつき",
-    "point": -10.7
+    "player": "内川 幸太郎",
+    "team": "EX風林火山",
+    "short": "風林火山",
+    "owner": "まさき",
+    "point": -6.5
   },
   {
-    "player": "逢川 恵夢",
-    "team": "EARTH JETS",
-    "short": "ジェッツ",
-    "owner": "にの",
-    "point": -23.4
+    "player": "園田 賢",
+    "team": "赤坂ドリブンズ",
+    "short": "ドリブンズ",
+    "owner": "とかじ",
+    "point": -31.5
   },
   {
     "player": "黒沢 咲",
@@ -182,6 +182,13 @@
     "point": -43.6
   },
   {
+    "player": "逢川 恵夢",
+    "team": "EARTH JETS",
+    "short": "ジェッツ",
+    "owner": "にの",
+    "point": -45.8
+  },
+  {
     "player": "東城 りお",
     "team": "BEAST X",
     "short": "ビースト",
@@ -189,18 +196,11 @@
     "point": -50.4
   },
   {
-    "player": "HIRO 柴田",
-    "team": "EARTH JETS",
-    "short": "ジェッツ",
-    "owner": "にの",
-    "point": -58.0
-  },
-  {
-    "player": "二階堂 亜樹",
-    "team": "EX風林火山",
-    "short": "風林火山",
-    "owner": "まさき",
-    "point": -59.2
+    "player": "鈴木 大介",
+    "team": "BEAST X",
+    "short": "ビースト",
+    "owner": "いつき",
+    "point": -53.9
   },
   {
     "player": "阿久津 翔太",
@@ -214,7 +214,14 @@
     "team": "U-NEXT Pirates",
     "short": "パイレーツ",
     "owner": "やはぎ",
-    "point": -82.9
+    "point": -83.1
+  },
+  {
+    "player": "二階堂 亜樹",
+    "team": "EX風林火山",
+    "short": "風林火山",
+    "owner": "まさき",
+    "point": -90.3
   },
   {
     "player": "鈴木 たろう",
@@ -222,13 +229,6 @@
     "short": "ドリブンズ",
     "owner": "とかじ",
     "point": -92.7
-  },
-  {
-    "player": "園田 賢",
-    "team": "赤坂ドリブンズ",
-    "short": "ドリブンズ",
-    "owner": "とかじ",
-    "point": -118.2
   },
   {
     "player": "石井 一馬",
@@ -277,6 +277,6 @@
     "team": "TEAM RAIDEN / 雷電",
     "short": "雷電",
     "owner": "ゆうま",
-    "point": -376.9
+    "point": -432.3
   }
 ]

@@ -1,16 +1,16 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-26",
   "season": "2026-27",
   "teams": [
     {
       "team": "KADOKAWAサクラナイツ",
       "short": "サクラナイツ",
       "owner": "ゆうま",
-      "point": 377.6,
+      "point": 414.9,
       "color": "#df4385",
       "top": "KADOKAWA",
       "main": "サクラナイツ",
-      "games": 34
+      "games": 36
     },
     {
       "team": "KONAMI 麻雀格闘倶楽部",
@@ -23,44 +23,44 @@
       "games": 36
     },
     {
-      "team": "TEAM RAIDEN / 雷電",
-      "short": "雷電",
-      "owner": "ゆうま",
-      "point": 98.7,
-      "color": "#e59b19",
-      "top": "TEAM",
-      "main": "雷電",
-      "games": 34
-    },
-    {
-      "team": "BEAST X",
-      "short": "ビースト",
-      "owner": "いつき",
-      "point": 73.6,
-      "color": "#024958",
-      "top": "x",
-      "main": "BEAST",
+      "team": "赤坂ドリブンズ",
+      "short": "ドリブンズ",
+      "owner": "とかじ",
+      "point": 70.8,
+      "color": "#95c500",
+      "top": "赤坂",
+      "main": "ドリブンズ",
       "games": 36
     },
     {
       "team": "U-NEXT Pirates",
       "short": "パイレーツ",
       "owner": "やはぎ",
-      "point": 12.6,
+      "point": 69.1,
       "color": "#0e027d",
       "top": "U-NEXT",
       "main": "Pirates",
+      "games": 38
+    },
+    {
+      "team": "TEAM RAIDEN / 雷電",
+      "short": "雷電",
+      "owner": "ゆうま",
+      "point": 10.6,
+      "color": "#e59b19",
+      "top": "TEAM",
+      "main": "雷電",
       "games": 36
     },
     {
-      "team": "赤坂ドリブンズ",
-      "short": "ドリブンズ",
-      "owner": "とかじ",
-      "point": -24.6,
-      "color": "#95c500",
-      "top": "赤坂",
-      "main": "ドリブンズ",
-      "games": 34
+      "team": "BEAST X",
+      "short": "ビースト",
+      "owner": "いつき",
+      "point": -14.6,
+      "color": "#024958",
+      "top": "x",
+      "main": "BEAST",
+      "games": 38
     },
     {
       "team": "セガサミーフェニックス",
@@ -76,37 +76,37 @@
       "team": "EX風林火山",
       "short": "風林火山",
       "owner": "まさき",
-      "point": -126.8,
+      "point": -190.6,
       "color": "#a70008",
       "top": "EX",
       "main": "風林火山",
-      "games": 36
+      "games": 38
     },
     {
       "team": "渋谷ABEMAS",
       "short": "アベマズ",
       "owner": "にの",
-      "point": -255.9,
+      "point": -243.5,
       "color": "#a86406",
       "top": "渋谷",
       "main": "ABEMAS",
-      "games": 36
+      "games": 38
     },
     {
       "team": "EARTH JETS",
       "short": "ジェッツ",
       "owner": "にの",
-      "point": -412.2,
+      "point": -373.7,
       "color": "#04431f",
       "top": "EARTH",
       "main": "JETS",
-      "games": 34
+      "games": 36
     }
   ],
   "members": [
     {
       "name": "ゆうま",
-      "point": 476.3,
+      "point": 425.5,
       "teams": [
         "KADOKAWAサクラナイツ",
         "TEAM RAIDEN / 雷電"
@@ -114,24 +114,24 @@
     },
     {
       "name": "とかじ",
-      "point": 283.8,
+      "point": 379.2,
       "teams": [
         "KONAMI 麻雀格闘倶楽部",
         "赤坂ドリブンズ"
       ]
     },
     {
-      "name": "いつき",
-      "point": 73.6,
+      "name": "やはぎ",
+      "point": 69.1,
       "teams": [
-        "BEAST X"
+        "U-NEXT Pirates"
       ]
     },
     {
-      "name": "やはぎ",
-      "point": 12.6,
+      "name": "いつき",
+      "point": -14.6,
       "teams": [
-        "U-NEXT Pirates"
+        "BEAST X"
       ]
     },
     {
@@ -143,14 +143,14 @@
     },
     {
       "name": "まさき",
-      "point": -126.8,
+      "point": -190.6,
       "teams": [
         "EX風林火山"
       ]
     },
     {
       "name": "にの",
-      "point": -668.1,
+      "point": -617.2,
       "teams": [
         "渋谷ABEMAS",
         "EARTH JETS"
