@@ -13,7 +13,9 @@ permissions:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    # ubuntu-latest が Ubuntu 26 へ移行（2026-10-19〜）した後から失敗し始めたため、
+    # 動作実績のある 24.04 に固定（playwright 1.47 の --with-deps が 26 未対応の疑い）
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
