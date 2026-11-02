@@ -13,6 +13,10 @@ on:
         description: "メッセージ先頭に付けるラベル（例: 🧪 テスト送信）"
         required: false
         default: ""
+      taunt:
+        description: "あおり文を指定（空ならいつも通りランダム）"
+        required: false
+        default: ""
 
 permissions:
   contents: write   # あおり文の使用済み記録(taunts_used.json)を保存するため
@@ -38,6 +42,7 @@ jobs:
           LINE_TARGET_ID: ${{ secrets.LINE_TARGET_ID }}
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
           LINE_MESSAGE_PREFIX: ${{ inputs.note }}
+          LINE_TAUNT_TEXT: ${{ inputs.taunt }}
         run: python -m src.notify_line
 
       # 使用済みあおり文の記録をコミット（シーズン中の重複防止を永続化）

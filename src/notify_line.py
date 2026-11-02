@@ -181,6 +181,11 @@ def send(settings: Settings, snap: Snapshot, wait_public: bool = True) -> None:
 
     kuso = snap.members[-1] if snap.members else None
     idx, taunt_text = choose_taunt(snap.season, kuso) if kuso else (-1, "🀄 Mリーグ ポイント争奪戦")
+    # 手動実行であおり文を指定した場合はそれを使う（ランダム枠は消費しない）
+    import os
+    custom = os.getenv("LINE_TAUNT_TEXT", "").strip()
+    if custom:
+        idx, taunt_text = -1, custom
 
     headers = {
         "Authorization": f"Bearer {settings.line_channel_access_token}",
