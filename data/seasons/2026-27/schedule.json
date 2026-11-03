@@ -834,10 +834,10 @@
     "date": "2026-11-03",
     "weekday": "火",
     "teams": [
-      "EX風林火山",
       "KADOKAWAサクラナイツ",
       "BEAST X",
-      "U-NEXT Pirates"
+      "U-NEXT Pirates",
+      "EX風林火山"
     ],
     "finished": false,
     "key": "",
@@ -847,10 +847,10 @@
     "date": "2026-11-03",
     "weekday": "火",
     "teams": [
-      "赤坂ドリブンズ",
-      "KONAMI 麻雀格闘倶楽部",
       "セガサミーフェニックス",
-      "TEAM RAIDEN / 雷電"
+      "赤坂ドリブンズ",
+      "TEAM RAIDEN / 雷電",
+      "KONAMI 麻雀格闘倶楽部"
     ],
     "finished": false,
     "key": "",
