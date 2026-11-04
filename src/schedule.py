@@ -1,20 +1,14 @@
-"""m-league.jp/games（試合日程）のスクレイピングとカレンダー生成。
+"""m-league.jp の試合日程・結果の取得。
 
-日程ページは月タブ（9月〜翌5月）で切り替わり、各試合は
-  .p-gamesSchedule2__list
-    .p-gamesSchedule2__data   … "10/1（水）" のような日付
-    .p-gamesSchedule2__logos img[alt] … 対戦4チーム名
-    class に is-finish が付くと消化済み
-という構造。全月タブを順にクリックして全試合を集める。
-
-シーズンは 9〜12月＝開始年 / 1〜5月＝翌年 として日付を確定する。
+2026-11 のサイト刷新以降、日程ページは公式の JSON（/api/mleague/data?kind=games）
+から描画されるため、それを直接読む（以前の HTML を月タブ巡回で読む方式は廃止）。
 """
 from __future__ import annotations
 
 import json
 import re
 from dataclasses import asdict, dataclass
-from datetime import date
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -46,114 +40,87 @@ def _iso_date(month: int, day: int, start_year: int) -> str:
     return date(year, month, day).isoformat()
 
 
-def scrape_schedule(season: str, end_month: int = 3) -> list[Game]:
-    """レギュラーシーズンの試合日程を取得する。
+GAMES_API = "https://m-league.jp/api/mleague/data?kind=games"
+_WD = "月火水木金土日"
 
-    end_month: レギュラーシーズン最終月（既定3=3月末まで）。
-    4・5月のセミ/ファイナルは集計対象外なので除外する。
+
+def _jst_date(iso_utc: str) -> date:
+    """API の日時（UTC, 例 "2026-11-01T15:00:00.000Z"）を日本時間の日付にする。"""
+    dt = datetime.fromisoformat(iso_utc.replace("Z", "+00:00"))
+    return (dt + timedelta(hours=9)).date()
+
+
+def _fetch_games_json() -> dict:
+    """公式サイトの日程 JSON を取得する。
+
+    2026-11 のサイト刷新で、日程ページは /api/mleague/data?kind=games の JSON から
+    描画されるようになった。サイトと同じ条件で取るため、ページを開いてから
+    同一オリジンで fetch する。
     """
-    start_year = _season_start_year(season)
-    games: dict[tuple, Game] = {}
-
-    def in_regular(month: int) -> bool:
-        return month >= 9 or month <= end_month
-
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(GAMES_URL, timeout=60000)
-        page.wait_for_selector(".p-gamesSchedule2__list", timeout=30000)
-
-        # 月タブは切替でセクションが再描画され、要素ハンドルが無効化される。
-        # そのため「月ラベルの一覧」だけ先に取り、各月はその都度取り直してクリックする。
-        tab_sel = ".p-gamesSchedule2__tab-item, .p-gamesSchedule2__tab-list li"
-        month_labels: list[str] = []
-        for t in page.query_selector_all(tab_sel):
-            label = (t.inner_text() or "").strip()
-            if re.fullmatch(r"\d+月", label) and label not in month_labels:
-                month_labels.append(label)
-
-        def click_month(label: str) -> bool:
-            for t in page.query_selector_all(tab_sel):
-                if (t.inner_text() or "").strip() == label:
-                    t.click()
-                    return True
-            return False
-
-        def collect_current() -> None:
-            for it in page.query_selector_all(".p-gamesSchedule2__list"):
-                data_el = it.query_selector(".p-gamesSchedule2__data")
-                if not data_el:
-                    continue
-                raw = data_el.inner_text().strip()
-                m = re.search(r"(\d+)\s*/\s*(\d+)", raw)
-                if not m:
-                    continue
-                month, day = int(m.group(1)), int(m.group(2))
-                if not in_regular(month):
-                    continue  # 4・5月（セミ/ファイナル）は除外
-                wd = re.search(r"（(.)）", raw)
-                weekday = wd.group(1) if wd else ""
-                teams = [
-                    img.get_attribute("alt").strip()
-                    for img in it.query_selector_all(".p-gamesSchedule2__logos img")
-                    if img.get_attribute("alt")
-                ]
-                finished = "is-finish" in (it.get_attribute("class") or "")
-                dt = it.get_attribute("data-target") or ""
-                key = dt.replace("key", "") if dt.startswith("key") else ""
-                iso = _iso_date(month, day, start_year)
-                games[(iso, tuple(teams))] = Game(
-                    date=iso, weekday=weekday, teams=teams, finished=finished, key=key
-                )
-
-        collect_current()  # 初期表示（当月）
-        for label in month_labels:
-            try:
-                if click_month(label):
-                    # タブ切替はAJAXで中身が入れ替わるため十分に待つ
-                    page.wait_for_timeout(2500)
-                    collect_current()
-            except Exception:
-                continue
-
-        # 消化済み試合の結果モーダル（js-modal-key<日付>-<番号>）をまとめて抽出
-        raw_results = page.evaluate(
-            """() => {
-              const out = {};
-              document.querySelectorAll('.c-modal2').forEach(m => {
-                if (!m.id.startsWith('js-modal-key') || m.id.includes('年')) return;
-                const key = m.id.replace('js-modal-key', '');
-                const rounds = [];
-                m.querySelectorAll('.p-gamesResult__column').forEach(col => {
-                  const rn = (col.querySelector('.p-gamesResult__number') || {}).innerText || '';
-                  const scores = [];
-                  col.querySelectorAll('.p-gamesResult__rank-item').forEach(it => {
-                    const nm = (it.querySelector('.p-gamesResult__name') || {}).innerText || '';
-                    const pt = (it.querySelector('.p-gamesResult__point') || {}).innerText || '';
-                    if (nm.trim()) scores.push([nm.trim(), pt.trim()]);
-                  });
-                  if (scores.length) rounds.push({ round: rn.trim(), scores });
-                });
-                if (rounds.length) out[key] = rounds;
-              });
-              return out;
-            }"""
+        data = page.evaluate(
+            """async (url) => {
+              const r = await fetch(url, { cache: 'no-store' });
+              if (!r.ok) throw new Error('HTTP ' + r.status);
+              return await r.json();
+            }""",
+            GAMES_API,
         )
-
         browser.close()
+    return data
 
-    # 結果を各試合に紐付け（得点は ▲=マイナスで数値化）
-    for g in games.values():
-        rounds = raw_results.get(g.key)
-        if rounds:
-            g.results = [
-                {"round": r["round"],
-                 "scores": [[nm, _parse_point(pt)] for nm, pt in r["scores"]]}
-                for r in rounds
-            ]
 
-    return sorted(games.values(), key=lambda g: g.date)
+def scrape_schedule(season: str, end_month: int = 3) -> list[Game]:
+    """レギュラーシーズンの試合日程・結果を取得する。
+
+    API は半荘(回戦)単位で、1件 = {date, no(回戦), desk(卓 0/1), complete, players[...]}。
+    これを「日付＋卓」でまとめて 1試合（第1回戦・第2回戦）にする。
+    end_month: レギュラーシーズン最終月（既定3=3月末まで）。4・5月は除外。
+    """
+    data = _fetch_games_json()
+    phase = (data.get("season") or {}).get("phase")
+    year = (data.get("season") or {}).get("year")
+    if phase and phase != "regular":
+        raise RuntimeError(f"レギュラーシーズン以外のデータです（phase={phase}）")
+    if year and int(year) != _season_start_year(season):
+        raise RuntimeError(f"シーズン不一致（API={year}, 設定={season}）")
+
+    def in_regular(month: int) -> bool:
+        return month >= 9 or month <= end_month
+
+    groups: dict[tuple, list[dict]] = {}
+    for h in data.get("games") or []:
+        d = _jst_date(h["date"])
+        if not in_regular(d.month):
+            continue
+        groups.setdefault((d, h.get("desk", 0)), []).append(h)
+
+    games: list[Game] = []
+    for (d, _desk), hs in sorted(groups.items(), key=lambda kv: (kv[0][0], kv[0][1])):
+        hs.sort(key=lambda h: h.get("no") or 0)
+        teams = [pl["team"] for pl in hs[0]["players"]]
+        results = []
+        for h in hs:
+            if not h.get("complete"):
+                continue
+            ranked = sorted(h["players"], key=lambda pl: (pl.get("rank") or 9))
+            results.append({
+                "round": f"第{h.get('no')}回戦",
+                "scores": [[(pl.get("name") or "").replace(" ", ""), float(pl.get("point") or 0)]
+                           for pl in ranked],
+            })
+        finished = bool(hs) and all(h.get("complete") for h in hs)
+        games.append(Game(
+            date=d.isoformat(), weekday=_WD[d.weekday()], teams=teams,
+            finished=finished, key=re.sub(r"_\d+[A-Z]?$", "", hs[0]["id"]) + "-" + str(_desk),
+            results=results or None,
+        ))
+    if not games:
+        raise RuntimeError("日程データが空でした")
+    return games
 
 
 def _parse_point(text: str) -> float:
