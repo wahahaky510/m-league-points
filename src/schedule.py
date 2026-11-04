@@ -168,22 +168,32 @@ def _parse_point(text: str) -> float:
     return -v if neg else v
 
 
+def _game_id(g: Game) -> tuple:
+    """試合の同一判定キー。チームの並び順・空白の違いに左右されないようにする。
+
+    （2026-11 の公式サイト刷新でロゴの並び順や「KONAMI 麻雀格闘倶楽部」の
+    空白が変わり、並び順依存の照合で保存済み結果が全部外れたため）
+    """
+    return (g.date, frozenset(t.replace(" ", "").replace("　", "") for t in g.teams))
+
+
 def merge_results(new_games: list[Game], old_games: list[Game]) -> list[Game]:
     """既に保存済みの結果を引き継ぐ（蓄積）。
 
     一度取得した試合結果は最終値なので、サイトが古いモーダルを
     落としても失わないよう、新規スクレイプに保存済みの結果を補完する。
+    消化済みフラグ・キーも保存済み側を引き継ぐ。
     """
-    old_by = {(g.date, tuple(g.teams)): g for g in old_games}
+    old_by = {_game_id(g): g for g in old_games}
     for g in new_games:
-        o = old_by.get((g.date, tuple(g.teams)))
+        o = old_by.get(_game_id(g))
         if not o:
             continue
         if not g.results and o.results:
             g.results = o.results
-            g.finished = g.finished or o.finished
-            if not g.key:
-                g.key = o.key
+        g.finished = g.finished or o.finished or bool(g.results)
+        if not g.key:
+            g.key = o.key
     return new_games
 
 

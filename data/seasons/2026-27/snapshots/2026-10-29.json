@@ -6,7 +6,7 @@
       "team": "KADOKAWAサクラナイツ",
       "short": "サクラナイツ",
       "owner": "ゆうま",
-      "point": 364.5,
+      "point": 361.4,
       "color": "#df4385",
       "top": "KADOKAWA",
       "main": "サクラナイツ",
@@ -26,7 +26,7 @@
       "team": "赤坂ドリブンズ",
       "short": "ドリブンズ",
       "owner": "とかじ",
-      "point": 81.4,
+      "point": 81.7,
       "color": "#95c500",
       "top": "赤坂",
       "main": "ドリブンズ",
@@ -36,7 +36,7 @@
       "team": "U-NEXT Pirates",
       "short": "パイレーツ",
       "owner": "やはぎ",
-      "point": 22.6,
+      "point": 24.9,
       "color": "#0e027d",
       "top": "U-NEXT",
       "main": "Pirates",
@@ -76,7 +76,7 @@
       "team": "渋谷ABEMAS",
       "short": "アベマズ",
       "owner": "にの",
-      "point": -175.9,
+      "point": -175.4,
       "color": "#a86406",
       "top": "渋谷",
       "main": "ABEMAS",
@@ -106,7 +106,7 @@
   "members": [
     {
       "name": "とかじ",
-      "point": 335.5,
+      "point": 335.8,
       "teams": [
         "KONAMI 麻雀格闘倶楽部",
         "赤坂ドリブンズ"
@@ -114,7 +114,7 @@
     },
     {
       "name": "ゆうま",
-      "point": 334.7,
+      "point": 331.6,
       "teams": [
         "KADOKAWAサクラナイツ",
         "TEAM RAIDEN / 雷電"
@@ -122,7 +122,7 @@
     },
     {
       "name": "やはぎ",
-      "point": 22.6,
+      "point": 24.9,
       "teams": [
         "U-NEXT Pirates"
       ]
@@ -150,7 +150,7 @@
     },
     {
       "name": "にの",
-      "point": -368.1,
+      "point": -367.6,
       "teams": [
         "渋谷ABEMAS",
         "EARTH JETS"
