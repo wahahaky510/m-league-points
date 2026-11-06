@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "season": "2026-27",
   "teams": [
     {
@@ -13,16 +13,6 @@
       "games": 48
     },
     {
-      "team": "KONAMI 麻雀格闘倶楽部",
-      "short": "ファイトクラブ",
-      "owner": "とかじ",
-      "point": 195.0,
-      "color": "#e50104",
-      "top": "KONAMI",
-      "main": "麻雀格闘倶楽部",
-      "games": 46
-    },
-    {
       "team": "TEAM RAIDEN / 雷電",
       "short": "雷電",
       "owner": "ゆうま",
@@ -33,74 +23,84 @@
       "games": 48
     },
     {
-      "team": "BEAST X",
-      "short": "ビースト",
-      "owner": "いつき",
-      "point": 76.9,
-      "color": "#024958",
-      "top": "x",
-      "main": "BEAST",
-      "games": 46
+      "team": "KONAMI 麻雀格闘倶楽部",
+      "short": "ファイトクラブ",
+      "owner": "とかじ",
+      "point": 130.3,
+      "color": "#e50104",
+      "top": "KONAMI",
+      "main": "麻雀格闘倶楽部",
+      "games": 48
     },
     {
       "team": "赤坂ドリブンズ",
       "short": "ドリブンズ",
       "owner": "とかじ",
-      "point": -16.5,
+      "point": 101.2,
       "color": "#95c500",
       "top": "赤坂",
       "main": "ドリブンズ",
-      "games": 46
+      "games": 48
+    },
+    {
+      "team": "BEAST X",
+      "short": "ビースト",
+      "owner": "いつき",
+      "point": 19.3,
+      "color": "#024958",
+      "top": "x",
+      "main": "BEAST",
+      "games": 48
     },
     {
       "team": "U-NEXT Pirates",
       "short": "パイレーツ",
       "owner": "やはぎ",
-      "point": -48.7,
+      "point": -10.8,
       "color": "#0e027d",
       "top": "U-NEXT",
       "main": "Pirates",
-      "games": 46
-    },
-    {
-      "team": "セガサミーフェニックス",
-      "short": "フェニックス",
-      "owner": "れお",
-      "point": -69.1,
-      "color": "#dd6b03",
-      "top": "セガサミー",
-      "main": "フェニックス",
-      "games": 46
+      "games": 48
     },
     {
       "team": "渋谷ABEMAS",
       "short": "アベマズ",
       "owner": "にの",
-      "point": -157.9,
+      "point": -153.3,
       "color": "#a86406",
       "top": "渋谷",
       "main": "ABEMAS",
-      "games": 46
+      "games": 48
+    },
+    {
+      "team": "セガサミーフェニックス",
+      "short": "フェニックス",
+      "owner": "れお",
+      "point": -161.6,
+      "color": "#dd6b03",
+      "top": "セガサミー",
+      "main": "フェニックス",
+      "games": 48
     },
     {
       "team": "EARTH JETS",
       "short": "ジェッツ",
       "owner": "にの",
-      "point": -228.3,
+      "point": -189.8,
       "color": "#04431f",
       "top": "EARTH",
       "main": "JETS",
-      "games": 46
+      "games": 48
     },
     {
       "team": "EX風林火山",
       "short": "風林火山",
       "owner": "まさき",
-      "point": -273.6,
+      "point": -257.5,
       "color": "#a70008",
       "top": "EX",
       "main": "風林火山",
-      "games": 46
+      "games": 48
     }
   ],
   "members": [
@@ -114,7 +114,7 @@
     },
     {
       "name": "とかじ",
-      "point": 178.5,
+      "point": 231.5,
       "teams": [
         "KONAMI 麻雀格闘倶楽部",
         "赤坂ドリブンズ"
@@ -122,35 +122,35 @@
     },
     {
       "name": "いつき",
-      "point": 76.9,
+      "point": 19.3,
       "teams": [
         "BEAST X"
       ]
     },
     {
       "name": "やはぎ",
-      "point": -48.7,
+      "point": -10.8,
       "teams": [
         "U-NEXT Pirates"
       ]
     },
     {
       "name": "れお",
-      "point": -69.1,
+      "point": -161.6,
       "teams": [
         "セガサミーフェニックス"
       ]
     },
     {
       "name": "まさき",
-      "point": -273.6,
+      "point": -257.5,
       "teams": [
         "EX風林火山"
       ]
     },
     {
       "name": "にの",
-      "point": -386.2,
+      "point": -343.1,
       "teams": [
         "渋谷ABEMAS",
         "EARTH JETS"
