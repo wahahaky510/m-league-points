@@ -6,41 +6,41 @@
       "team": "KADOKAWAサクラナイツ",
       "short": "サクラナイツ",
       "owner": "ゆうま",
-      "point": 602.4,
+      "point": 481.3,
       "color": "#df4385",
       "top": "KADOKAWA",
       "main": "サクラナイツ",
-      "games": 62
+      "games": 64
     },
     {
       "team": "セガサミーフェニックス",
       "short": "フェニックス",
       "owner": "れお",
-      "point": 233.2,
+      "point": 347.9,
       "color": "#dd6b03",
       "top": "セガサミー",
       "main": "フェニックス",
-      "games": 62
+      "games": 64
     },
     {
       "team": "赤坂ドリブンズ",
       "short": "ドリブンズ",
       "owner": "とかじ",
-      "point": 184.1,
+      "point": 315.0,
       "color": "#95c500",
       "top": "赤坂",
       "main": "ドリブンズ",
-      "games": 62
+      "games": 64
     },
     {
       "team": "TEAM RAIDEN / 雷電",
       "short": "雷電",
       "owner": "ゆうま",
-      "point": 167.7,
+      "point": 120.3,
       "color": "#e59b19",
       "top": "TEAM",
       "main": "雷電",
-      "games": 62
+      "games": 64
     },
     {
       "team": "KONAMI 麻雀格闘倶楽部",
@@ -53,24 +53,24 @@
       "games": 64
     },
     {
-      "team": "BEAST X",
-      "short": "ビースト",
-      "owner": "いつき",
-      "point": -95.9,
-      "color": "#024958",
-      "top": "x",
-      "main": "BEAST",
-      "games": 62
-    },
-    {
       "team": "EARTH JETS",
       "short": "ジェッツ",
       "owner": "にの",
-      "point": -164.7,
+      "point": -132.5,
       "color": "#04431f",
       "top": "EARTH",
       "main": "JETS",
-      "games": 62
+      "games": 64
+    },
+    {
+      "team": "BEAST X",
+      "short": "ビースト",
+      "owner": "いつき",
+      "point": -137.9,
+      "color": "#024958",
+      "top": "x",
+      "main": "BEAST",
+      "games": 64
     },
     {
       "team": "U-NEXT Pirates",
@@ -86,50 +86,50 @@
       "team": "EX風林火山",
       "short": "風林火山",
       "owner": "まさき",
-      "point": -315.6,
+      "point": -290.0,
       "color": "#a70008",
       "top": "EX",
       "main": "風林火山",
-      "games": 62
+      "games": 64
     },
     {
       "team": "渋谷ABEMAS",
       "short": "アベマズ",
       "owner": "にの",
-      "point": -396.8,
+      "point": -489.7,
       "color": "#a86406",
       "top": "渋谷",
       "main": "ABEMAS",
-      "games": 62
+      "games": 64
     }
   ],
   "members": [
     {
       "name": "ゆうま",
-      "point": 770.1,
+      "point": 601.6,
       "teams": [
         "KADOKAWAサクラナイツ",
         "TEAM RAIDEN / 雷電"
       ]
     },
     {
-      "name": "れお",
-      "point": 233.2,
-      "teams": [
-        "セガサミーフェニックス"
-      ]
-    },
-    {
       "name": "とかじ",
-      "point": 223.6,
+      "point": 354.5,
       "teams": [
         "赤坂ドリブンズ",
         "KONAMI 麻雀格闘倶楽部"
       ]
     },
     {
+      "name": "れお",
+      "point": 347.9,
+      "teams": [
+        "セガサミーフェニックス"
+      ]
+    },
+    {
       "name": "いつき",
-      "point": -95.9,
+      "point": -137.9,
       "teams": [
         "BEAST X"
       ]
@@ -143,14 +143,14 @@
     },
     {
       "name": "まさき",
-      "point": -315.6,
+      "point": -290.0,
       "teams": [
         "EX風林火山"
       ]
     },
     {
       "name": "にの",
-      "point": -561.5,
+      "point": -622.2,
       "teams": [
         "EARTH JETS",
         "渋谷ABEMAS"
